@@ -1,0 +1,13 @@
+.StudyRow {
+    width: 80vw;
+    display: flex;
+    margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.StudyRow span {
+    width : 25%;
+}
+
+.invisible {
+    display: none;
+}
