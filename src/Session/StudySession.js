@@ -6,14 +6,14 @@ import './StudySession.css';
 class StudySession extends React.Component {
   constructor(props){
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleStudySubmit = this.handleStudySubmit.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
   }
 
-  handleSubmit(event){
-    this.props.handleSubmit();
+  handleStudySubmit(event){
+    this.props.handleStudySubmit();
     event.preventDefault();
   }
 
@@ -33,7 +33,7 @@ class StudySession extends React.Component {
     return (
       <div className="StudySession">
         <Reward reward={this.props.reward}></Reward>
-        <form className="rewardForm" onSubmit={this.handleSubmit}>
+        <form className="rewardForm" onSubmit={this.handleStudySubmit}>
           <TimeInput time={this.props.time} onTimeChange={this.handleTimeChange}></TimeInput>
           <div>
             <label>

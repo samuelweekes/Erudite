@@ -6,6 +6,10 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   password: String,
+  account: {
+    balance : Number,
+    maxBalance : Number,
+  }
 });
 
 const User = mongoose.model('User', userSchema);

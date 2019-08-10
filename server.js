@@ -25,6 +25,44 @@ app.get('/study', function(req, res){
   });
 });
 
+const hardCodedId = '5d4f1b7fd465d35adc4e762b';
+app.get('/account', function(req, res){
+  Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
+    if(err){console.log('Couldn\'t retrieve this account')};
+    res.send(account.account);
+  });
+})
+
+app.post('/account', function(req, res){
+  const updateData = {
+    "$inc": {
+      "account.balance" : req.body.balance,
+      "account.maxBalance" : req.body.balance
+      }
+  }
+  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(account.account)
+  }); 
+});
+
+app.post('/account/reset', function(req, res){
+  const updateData = {
+    "$set": {
+      "account.balance" : 0,
+      "account.maxBalance" : 0
+      }
+  }
+  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(account.account)
+  }); 
+});
+
 app.post('/study', function(req, res){
   const newStudy      = req.body.data;
   const maxBalance    = 400;
@@ -35,7 +73,19 @@ app.post('/study', function(req, res){
   newStudy.time = timeInSeconds;
   newStudy.reward = reward;
 
-  //Deal with modifying account balance
+  const updateData = {
+    "$inc": {
+      "account.balance" : -(parseInt(reward,10)),
+      "account.maxBalance" : -(parseInt(reward,10))
+      }
+  }
+
+  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+    if(err){
+      console.log(err);
+        console.log('There was a problem updating account');
+    }
+  }); 
   
   Mongo.Study.create(newStudy, (err, study) => {
     if(err){
