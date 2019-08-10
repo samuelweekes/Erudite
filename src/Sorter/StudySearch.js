@@ -12,7 +12,6 @@ class StudySearch extends React.Component {
     }
 
     render(){
-        const search = this.props.search;
         return (
             <input className="StudySearch" onChange={this.handleChange}/>
         );

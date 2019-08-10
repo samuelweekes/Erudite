@@ -1,9 +1,7 @@
 import React from 'react';
 import {Reward} from './Reward.js';
 import {TimeInput} from './TimeInput.js';
-import axios from 'axios';
 import './StudySession.css';
-import { thisExpression } from '@babel/types';
 
 class StudySession extends React.Component {
   constructor(props){

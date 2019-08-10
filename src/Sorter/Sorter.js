@@ -2,7 +2,6 @@ import React from 'react';
 import {StudyRow} from './StudyRow.js';
 import {StudySearch} from './StudySearch.js';
 import './Sorter.css';
-import axios from 'axios';
 
 class Sorter extends React.Component {
   constructor(props){

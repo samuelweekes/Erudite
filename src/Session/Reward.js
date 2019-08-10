@@ -8,9 +8,6 @@ import './Reward.css';
 
 
 class Reward extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   showReward(){
     const reward = {};
@@ -51,7 +48,7 @@ class Reward extends React.Component {
           <h3>{reward.text}</h3>
         </div>
         <div className="rewardImg">
-          <img src={reward.image}/>
+          <img src={reward.image} alt=""/>
         </div>
       </div>
     );
