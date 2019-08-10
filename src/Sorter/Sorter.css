@@ -1,3 +1,13 @@
 .Sorter {
     min-width:70vw;
 }
+
+.studyContainer {
+  max-height: 80vh;
+  overflow:scroll;
+}
+
+.studyHeader {
+  font-size: 1.2em;
+  font-weight: bold;
+}

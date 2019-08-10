@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import {Sorter} from './Sorter/Sorter.js';
-import {StudySession} from './Session/StudySession.js';
+import {DopaStudy} from './DopaStudy.js';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <StudySession></StudySession>
+        <DopaStudy></DopaStudy>
       </header>
     </div>
   );
@@ -15,4 +14,3 @@ function App() {
 
 export default App;
 //Sorter component
-//<Sorter></Sorter>
