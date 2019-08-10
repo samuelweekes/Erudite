@@ -1,0 +1,9 @@
+.rewardImg {
+   max-width: 150px;
+   max-height: 150px;
+}
+
+.rewardImg img {
+  height:100%;
+  width:100%;
+}
