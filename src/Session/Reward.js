@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import happy from '../assets/happy_face.png';
 import neutral from '../assets/neutral_face.png';
 import './Reward.css';
@@ -11,11 +12,14 @@ class Reward extends React.Component {
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
 
-    this.state = {time: '', type: ''};
+    this.state = {time: '12:33', type: 'Math'};
   }
 
   handleSubmit(event){
-    console.log(`The form was submitted time is ${this.state.time} and type is ${this.state.type}`);
+    axios.post('/addSession', {data: this.state})
+    .then(res => {
+      console.log(res);
+    });
     event.preventDefault();
   }
 
