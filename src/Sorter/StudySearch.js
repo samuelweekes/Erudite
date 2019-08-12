@@ -13,7 +13,7 @@ class StudySearch extends React.Component {
 
     render(){
         return (
-            <input className="StudySearch" onChange={this.handleChange}/>
+            <input className="StudySearch" placeholder="Search" onChange={this.handleChange}/>
         );
     }
 }

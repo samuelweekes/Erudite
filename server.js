@@ -119,7 +119,6 @@ function getReward(maxBalance, bonus=false) {
   const random = Math.floor(Math.random()*100)+1;
   const rewardModifier = Math.ceil(((2/(percentOfBalance))*100));
   
-  //Modify bonus, up to 1.5 as a max
   if(bonus){
     reward = reward * bonus;
   }
@@ -134,15 +133,15 @@ function getBonus(time){
   bonus = 1;
   
   if(time > 7200){
-    bonus = Math.floor(Math.random()*6)+1;
+    bonus += (Math.floor(Math.random()*6)/10);
     return bonus;
   }
   if(time > 5400){
-    bonus = Math.floor(Math.random()*4)+1;
+    bonus += (Math.floor(Math.random()*4)/10);
     return bonus;
   }
   if(time > 3600){
-    bonus = Math.floor(Math.random()*3)+1;
+    bonus += (Math.floor(Math.random()*3)/10);
     return bonus;
   }
 

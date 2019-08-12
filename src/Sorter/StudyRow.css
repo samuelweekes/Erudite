@@ -1,11 +1,51 @@
 .studyRow {
-    width: 80vw;
     display: flex;
+    border: 2px solid gainsboro;
     margin: 0.5rem 0rem 0.5rem 0rem;
+    border-radius: 2px;
+    background: whitesmoke;
+    color:black;
+    width: 80%;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 1px grey;
 }
 
-.studyRow span {
-    width : 25%;
+.StudyNote {
+  text-align:left;
+}
+
+.leftStudyRow {
+  width: 25%;
+}
+.middleStudyRow {
+  width:60%;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.StudyText, .StudyReward {
+  font-weight: 900;
+  font-size: 14pt;
+  text-align: left;
+}
+
+.StudyTime, .StudyNote {
+  font-weight: 300;
+  font-size: 16pt;
+}
+
+.StudyNote {
+  font-size: 14pt;
+}
+
+.endStudyRow {
+  width: 10%;
+}
+
+.studySeperatorLeft {
+  display:flex;
+  justify-content: flex-start;
 }
 
 .invisible {

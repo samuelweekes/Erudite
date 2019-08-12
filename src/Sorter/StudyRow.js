@@ -13,19 +13,33 @@ export function StudyRow(props) {
       const note = props.note.toLowerCase(); 
       const search = props.search.toLowerCase(); 
       if(text.includes(search) || note.includes(search)){
-        return;
+        return '';
       }
-      return 'invisible';
+      return ' invisible';
     }
 
     const isHidden = shouldHide(); 
 
     return (
-        <div className={`studyRow ${isHidden}`}> 
-            <span className="StudyTime">{props.time}</span>
-            <span className="StudyText">{props.type}</span>
-            <span className="StudyNote">{props.note}</span>
-            <span className="StudyReward">{props.reward}</span>
+        <div className={`studyRow${isHidden}`}> 
+          <div className="leftStudyRow">
+              <div className="studySeperatorLeft">
+                <span className="StudyText">{props.type}</span>
+              </div>
+              <div className="studySeperatorLeft">
+                <span className="StudyTime">{props.time}</span>
+              </div>
+          </div>
+          <div className="middleStudyRow">
+            <div className="studySeperatorRight">
+              <span className="StudyNote">{props.note}</span>
+            </div>
+          </div>
+          <div className="endStudyRow">
+            <div className="studySeperatorRight">
+              <span className="StudyReward">£{props.reward}</span>
+            </div>
+          </div>
         </div>
     );
 }
