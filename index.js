@@ -31,8 +31,8 @@ app.get('/study', function(req, res){
 const hardCodedId = '5d4f1b7fd465d35adc4e762b';
 app.get('/account', function(req, res){
   Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
-    if(err){console.log('Couldn\'t retrieve this account')};
-    res.send(account.account);
+    if(err){console.log('Couldn\'t retrieve this account') return};
+      res.send(account.account);
   });
 })
 
