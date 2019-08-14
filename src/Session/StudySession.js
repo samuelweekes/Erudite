@@ -39,7 +39,7 @@ class StudySession extends React.Component {
             <label>
               Type: 
               <div>
-                <input className="typeInput" type="text" value={this.props.type} onChange={this.handleTypeChange} />
+                <input className="typeInput rewardInput" type="text" value={this.props.type} onChange={this.handleTypeChange} />
               </div>
             </label>
           </div> 

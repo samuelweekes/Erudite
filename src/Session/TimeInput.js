@@ -1,5 +1,4 @@
 import React from 'react';
-//import './Sorter.css';
 
 class TimeInput extends React.Component {
   constructor(props){
@@ -17,7 +16,7 @@ class TimeInput extends React.Component {
         <label>
           Time: 
           <div>
-            <input type="time" value={this.props.time} onChange={this.handleTimeChange} />
+            <input className="timeInput" type="time" value={this.props.time} onChange={this.handleTimeChange} />
           </div>
         </label>
       </div> 

@@ -80,9 +80,9 @@ class DopaStudy extends React.Component {
     .then(res => {
       this.resetSubmitState();
       this.setState({reward: res.data.reward, balance: res.data.balance, maxBalance: res.data.maxBalance});
-      setTimeout(() => {
-        this.setState({reward: null});
-      }, 10000);
+      // setTimeout(() => {
+        // this.setState({reward: null});
+      // }, 10000);
       this.getBalance();
       this.getStudySessions();
     });
@@ -111,7 +111,7 @@ class DopaStudy extends React.Component {
   render() {
     return (
       <div>
-        <div style={{height:'100vh'}}>
+        <div style={{height:'100vh', display:'flex', justifyContent:'center'}}>
           <StudySession {...this.state} 
             handleTimeChange={this.handleTimeChange} 
             handleTypeChange={this.handleTypeChange} 
@@ -123,7 +123,7 @@ class DopaStudy extends React.Component {
               
           </StudySession>
         </div>
-        <div style={{height:'100vh'}}>
+        <div style={{height:'100vh', display:'flex', justifyContent:'center'}}>
           <Account 
             balance={this.state.balance} 
             maxBalance={this.state.maxBalance}
@@ -134,7 +134,7 @@ class DopaStudy extends React.Component {
             funds={this.state.funds}
           ></Account>
         </div>
-        <div style={{minHeight:'100vh'}}>
+        <div style={{height:'100vh', display:'flex', justifyContent:'center'}}>
           <Sorter studySessions={this.state.studySessions} getStudySessions={this.getStudySessions}></Sorter>
         </div>
       </div>

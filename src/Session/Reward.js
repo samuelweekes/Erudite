@@ -14,7 +14,7 @@ class Reward extends React.Component {
     if(this.props.reward === null || 
        this.props.reward === undefined)
     {
-      reward.text = "Enter a study session for a chance at a reward!"
+      reward.text = "Enter a study session!"
       reward.image = null;
       return reward;
     }
@@ -45,7 +45,7 @@ class Reward extends React.Component {
     return (
       <div className="reward">
         <div className="rewardText">
-          <h3>{reward.text}</h3>
+          <span>{reward.text}</span>
         </div>
         <div className="rewardImg">
           <img src={reward.image} alt=""/>

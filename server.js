@@ -76,7 +76,7 @@ app.post('/study', function(req, res){
   const updateData = {
     "$inc": {
       "account.balance" : -(parseInt(reward,10)),
-      "account.maxBalance" : -(parseInt(reward,10))
+      // "account.maxBalance" : -(parseInt(reward,10))
       }
   }
 
@@ -120,7 +120,7 @@ function getReward(maxBalance, bonus=false) {
   const rewardModifier = Math.ceil(((2/(percentOfBalance))*100));
   
   if(bonus){
-    reward = reward * bonus;
+    reward = Math.floor(reward * bonus);
   }
   
   if(random < rewardModifier){
