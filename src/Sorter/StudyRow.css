@@ -15,13 +15,15 @@
 }
 
 .leftStudyRow {
-  width: 25%;
+  width: 10%;
+  margin-right:2em;
 }
 .middleStudyRow {
-  width:60%;
+  width:70%;
   display: flex;
   justify-content: flex-start;
   text-align: left;
+  margin-right:2em;
 }
 
 .StudyText, .StudyReward {
@@ -29,14 +31,22 @@
   font-size: 14pt;
   text-align: left;
 }
+.StudyTime {
+  margin-top: 0.5em;
+}
 
 .StudyTime, .StudyNote {
   font-weight: 300;
   font-size: 16pt;
 }
 
+.StudyDate{
+  font-size: 8pt
+}
+
 .StudyNote {
   font-size: 14pt;
+  word-break: break-word;
 }
 
 .endStudyRow {

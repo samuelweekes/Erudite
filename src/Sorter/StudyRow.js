@@ -39,6 +39,9 @@ export function StudyRow(props) {
             <div className="studySeperatorRight">
               <span className="StudyReward">£{props.reward}</span>
             </div>
+            <div className="studySeperatorRight">
+                <span className="StudyDate">{props.date}</span>
+              </div>
           </div>
         </div>
     );

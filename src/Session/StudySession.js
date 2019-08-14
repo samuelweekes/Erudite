@@ -52,7 +52,7 @@ class StudySession extends React.Component {
             </label>
           </div> 
           <div>
-            <input type="submit" value="Submit" />
+            <input className="studySubmit" type="submit" value="Submit" />
           </div>
         </form>
       </div>

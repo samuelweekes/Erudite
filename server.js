@@ -18,6 +18,9 @@ app.get('/study', function(req, res){
     const studyRows = study.map((studySession) => {
       const clone = {...studySession.toObject()}
       clone.time = getTimeFromSeconds(studySession.time);
+      let timestamp = new Date(studySession._id.getTimestamp());
+      clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
+      console.log(typeof(clone.date));
       return clone;
     });
 
