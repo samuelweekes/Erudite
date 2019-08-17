@@ -155,4 +155,4 @@ Mongo.connectDb().then(async () => {
   app.listen(process.env.PORT || 8000, function() {
     console.log(`App listening on port ${process.env.PORT} or on port 8000`);
   });
-})
+});

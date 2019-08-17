@@ -1,69 +1,160 @@
-.Account{
-  width: 50vw;
+.account {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.balanceContainer, .rewardContainer {
+  width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  text-align: center;
   align-items: center;
 }
 
-.accountHeader{
-  display:flex;
-  width:100%;
-  max-width: 400px;
-  justify-content:space-around;
-  background:whitesmoke;
-  border-radius: 3px;
-  color: black;
-}
+ .balanceContainer {
+  justify-content: flex-start;
+  padding-top: 5em;
+ }
+ 
+ .rewardContainer {
+   justify-content: flex-end;
+  }
 
-.accountHeader .current {
-  font-size: 5rem;
-  font-weight:600;
-  color:rgb(52, 56, 56)
-}
+ .balance, .reward {
+    height: 20%;
+    color: #34393C;
+    font-weight: 300;
+  }
 
-.accountHeader .max {
-  font-weight: 300;
-  font-size: 2em;
-  color:rgb(118, 118, 115)
-}
+  .balance .max {
+    font-size:4em;
+    display: flex;
+    justify-content: flex-end;
+  }
 
-.funds {
-    margin-top: 20%;
-    max-width: 250px;
-    width: 50%;
-    border:none;
-    border-radius: 2px;
-    font-size: 1.5rem;
-    font-family: 'Montserrat', sans-serif;
-}
+  .balance .current {
+    font-size: 12em;
+    line-height: 1em;
+  }
 
-.fundsButton {
-  font-family: 'Montserrat', sans-serif;
-  border-radius:3px;
-  font-size:1rem;
-  height: 2em;
-  border:none;
-  /* width:50px; */
-  /* height:30px; */
-  cursor:pointer;
-}
+  .reward {
+    margin-bottom: 10em;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+  }
 
-.buttonContainer {
-  margin-top: 1em;
-  max-width: 300px;
-  display:flex;
-  flex-direction:column;
-  width:100%;
-  height: 25%;
-  justify-content:space-around;
-}
-.add{
-  background-color: #4CAF50;
-}
-.remove{
-  background-color: #008CBA;
-}
-.cancel{
-  background-color: #f44336;
+  .reward .max {
+    font-size:2em;
+    margin-right: 7em;
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-end;
+  }
+
+  .reward .current {
+    font-size: 6em;
+    line-height: 1em;
+  }
+
+  .reward .buttonGroup{
+    margin-top : 2em;
+  }
+
+  .buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .buttonGroup {
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+  }
+
+  .buttonGroup img {
+    max-width: 20%;
+  }
+
+  .resetButton {
+    margin-top: 2em;
+  }
+
+  .resetButton img {
+    max-width: 2em;
+    transition: transform .8s ease-in-out;
+  }
+
+  .resetButton img:hover {
+    cursor:pointer;
+    transform: rotate(360deg);
+  }
+
+  .rewardInput, .balanceInput {
+    border: none;
+    font-size: 1.5em;
+    max-width: 50%;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #34393C;
+    text-align:center;
+  } 
+
+  .triangle {
+    width: 0;
+    height: 0;
+    position:absolute;
+    right: 3%;
+    bottom: 5%;
+    border-style: solid;
+    border-width: 0 0 80vh 50vw;
+    border-color: transparent transparent #AA8B39 transparent;
+    pointer-events:none
+  }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+@media only screen and (max-width: 800px) {
+
+  .account {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .balanceContainer{
+    width: 100%;
+    padding-top: 20%;
+    height: 80vh;
+  }
+  .rewardContainer{
+    width: 100%;
+    height: 100vh;
+    background: #6F90A1;
+    justify-content: center;
+  }
+
+  .balance {
+    margin-right: 5%;
+  }
+
+  .triangle {
+    z-index: 3;
+    width: 0;
+    height: 0;
+    position:absolute;
+    right: 3%;
+    bottom: -90%;
+    border-style: solid;
+    border-width: 0 0 80vh 80vw;
+    border-color: transparent transparent #AA8B39 transparent;
+  }
 }

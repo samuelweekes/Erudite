@@ -1,0 +1,75 @@
+.navBar {
+  width: 20%;
+  float:left;
+  background-color: #28546C;
+  height:100vh
+}
+
+.imgOuter {
+  width: 100%;
+  height: 200px;
+}
+
+.img {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 5%;
+  height: 90%;
+}
+
+.imgSeperator {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.imgLine {
+  width: 60%;
+}
+
+.linkContainer {
+  margin-top : 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.linkContainer ul {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.linkContainer li {
+  list-style : none;
+  margin-top : 1.3em;
+  transition: all .1s ease-out;
+}
+
+.linkContainer li:hover {
+  transform: scale(1.2);
+}
+
+.seperator {
+  margin-top: 1.3em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  width: 100%;
+}
+
+.linkContainer a {
+  text-decoration: none;
+  color: white;
+}
+
+@media only screen and (max-width: 1250px) {
+  .navBar {
+    display: none;
+  }
+}
