@@ -4,7 +4,7 @@ const Study = require('./study');
 
 const DATABASE_URL= `mongodb://localhost:27017/test`;
 const connectDb = () => {
-  return mongoose.connect(process.env.MONGODB_URI || DATABASE_URL);
+  return mongoose.connect(process.env.MONGOLAB_MAROON_URI || DATABASE_URL);
 }
 
 module.exports = {
