@@ -1,0 +1,100 @@
+.session {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sessionInputContainer {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.display {
+  width: 100%;
+  height: 65%;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.invisible {
+  display: none !important;
+}
+
+.search {
+  font-size: 2em;
+  border: none;
+  border-radius: 10px;
+  text-align:center;
+  min-width: 35%;
+  height: 1.5em;
+}
+
+.card {
+  display: flex;
+  border-radius: 10px;
+  width: 80%;
+  margin: 0.5em 0 0.5em 0;
+  text-align: center;
+  background-color: #34393C;
+  color: #ffffff;
+  padding: 0.5em;
+}
+
+.left, .right {
+  width: 15%;
+}
+
+.left upper, .right upper, .left lower, .right lower {
+  height: 50%;
+}
+
+.center {
+  width:70%;
+}
+
+.cardTime, .cardDate  {
+font-size: 0.8em;
+}
+
+.cardLine {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .search {
+    max-width: 70%;
+  }
+
+  .card .left, .card .right {
+    width: 50%;
+  }
+
+  .cardLine {
+    display: block;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    width: 80%;
+  }
+  
+  .card {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cardNote {
+    order: 5;
+  }
+
+  .center {
+    width: 60%;
+    max-height: 50px;
+    overflow: auto;
+  }
+}
