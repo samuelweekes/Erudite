@@ -166,11 +166,15 @@ font-size: 0.8em;
   }
 
    .sessionInputContainer {
-    height: 35%;
+    height: 45%;
   }
 
   .editSession input {
     max-height: 2em;
+  }
+
+  .editSession .card {
+    margin-top: 10%;
   }
 
   .editSession .cardNote{
