@@ -11,6 +11,10 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.get('/rew', function(req,res){
+  res.send('hello');
+});
+
 app.get('/study', function(req, res){
   Mongo.Study.find({}, (err, study) => {
     if(err){console.log('Couldn\'t retrieve study sessions')};
@@ -81,10 +85,6 @@ app.post('/study/session/edit', function(req, res){
     res.send(clone);
   });
 });
-
-app.get('/rew', function(req,res){
-  res.send('hello');
-})
 
 app.post('/reward', function(req, res){
   const updateData = {
