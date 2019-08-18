@@ -112,7 +112,7 @@ app.post('/account', function(req, res){
   }); 
 });
 
-app.post('/reward/reset', function(req, res){
+app.post('/account/resetreward', function(req, res){
   const updateData = {
     "$set": {
       "account.maxReward" : 0

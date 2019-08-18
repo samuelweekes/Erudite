@@ -83,7 +83,7 @@ export default class Account extends React.Component {
   }
 
   resetReward(){
-    axios.post('/reward/reset')
+    axios.post('/account/resetreward')
     .then(res => {
       this.setState({maxReward : res.data.maxBalance, rewardFunds: 0});
     });
