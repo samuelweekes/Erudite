@@ -212,7 +212,7 @@ font-size: 0.8em;
   }
   
   .card {
-    min-height: 100px;
+    min-height: 150px;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
