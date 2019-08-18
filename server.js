@@ -82,6 +82,10 @@ app.post('/study/session/edit', function(req, res){
   });
 });
 
+app.get('/rew', function(req,res){
+  res.send('hello');
+})
+
 app.post('/reward', function(req, res){
   const updateData = {
     "$inc": {
