@@ -25,6 +25,7 @@
     height: 20%;
     color: #34393C;
     font-weight: 300;
+    cursor: default;
   }
 
   .balance .max {
@@ -77,6 +78,7 @@
 
   .buttonGroup img {
     max-width: 20%;
+    cursor: pointer;
   }
 
   .resetButton {

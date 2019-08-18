@@ -39,7 +39,7 @@ app.post('/reward', function(req, res){
   const updateData = {
     "$inc": {
       "account.reward"    : req.body.balance,
-      "account.maxReward" : req.body.balance
+      "account.maxReward" : req.body.balance > 0 ? req.body.balance : 0
       }
   }
   Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {

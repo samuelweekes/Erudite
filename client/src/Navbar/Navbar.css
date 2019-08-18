@@ -15,6 +15,12 @@
   margin-left: 5%;
   margin-top: 5%;
   height: 90%;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .imgSeperator {

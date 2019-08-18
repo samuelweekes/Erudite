@@ -39,25 +39,3 @@ export default class Card extends React.Component {
     )
   }
 }
-  
-{/* <div className="leftStudyRow">
-<div className="studySeperatorLeft">
-  <span className="StudyText">{this.props.type}</span>
-</div>
-<div className="studySeperatorLeft">
-  <span className="StudyTime">{this.props.time}</span>
-</div>
-</div>
-<div className="middleStudyRow">
-<div className="studySeperatorRight">
-<span className="StudyNote">{this.props.note}</span>
-</div>
-</div>
-<div className="endStudyRow">
-<div className="studySeperatorRight">
-<span className="StudyReward">£{this.props.reward}</span>
-</div>
-<div className="studySeperatorRight">
-  <span className="StudyDate">{this.props.date}</span>
-</div> */}
-// </div>
