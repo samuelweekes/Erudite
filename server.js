@@ -35,6 +35,53 @@ app.get('/account', function(req, res){
   });
 });
 
+app.post('/study/session', function(req, res){
+  Mongo.Study.findOne({_id : req.body.id}, (err, study) => {
+    if(err){console.log('Couldn\'t retrieve this account')};
+      const clone = {...study.toObject()}
+      clone.time = getTimeFromSeconds(study.time);
+      let timestamp = new Date(study._id.getTimestamp());
+      clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
+    res.send(clone);
+  });
+});
+
+app.post('/study/session/edit', function(req, res){
+  const updateData = {
+    "$set": {
+      "time" : getSecondsFromTime(req.body.time),
+      "type" : req.body.type,
+      "note" : req.body.note,
+      }
+  }
+  Mongo.Study.findByIdAndUpdate(req.body.id, updateData, {new:true}, (err, study) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(study)
+  }); 
+});
+
+app.post('/study/session/delete', function(req, res){
+  Mongo.Study.findByIdAndRemove(req.body.id, (err, study) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(study)
+  }); 
+});
+
+app.post('/study/session/edit', function(req, res){
+  Mongo.Study.findOne({_id : req.body.id}, (err, study) => {
+    if(err){console.log('Couldn\'t retrieve this account')};
+      const clone = {...study.toObject()}
+      clone.time = getTimeFromSeconds(study.time);
+      let timestamp = new Date(study._id.getTimestamp());
+      clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
+    res.send(clone);
+  });
+});
+
 app.post('/reward', function(req, res){
   const updateData = {
     "$inc": {

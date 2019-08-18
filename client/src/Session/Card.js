@@ -4,6 +4,7 @@ export default class Card extends React.Component {
   constructor(props){
     super(props);
     this.shouldHide = this.shouldHide.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   shouldHide(){
@@ -21,10 +22,14 @@ export default class Card extends React.Component {
     return ' invisible';
   }
 
+  handleClick(){
+    this.props.handleClick(this.props._id);
+  }
+
   render(){
     const isHidden = this.shouldHide(); 
     return (
-      <div className={`card ${isHidden}`}> 
+      <div onClick={this.handleClick} className={`card ${isHidden}`}> 
         <div className="left">
           <div className="upper cardType">{this.props.type}</div>
           <div className="lower cardTime">{this.props.time}</div>

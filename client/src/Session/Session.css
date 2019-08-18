@@ -21,6 +21,62 @@
   overflow: auto;
 }
 
+.editSession{
+  width: 100%;
+  display: flex;
+  flex-direction:column;  
+  align-items: center;
+}
+
+.editButtons img {
+   width: 2em;
+   margin-left: 2em;
+   margin-right: 2em;
+   margin-top: 1em;
+   cursor: pointer;
+}
+
+.card input {
+  border: none; 
+  border-radius: 10px;
+  text-align:center;
+  min-width: 70%;
+  height: 2.5em;
+}
+
+.editSession .cardNote textarea {
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  text-align:center;
+  min-width: 70%;
+  height: 3em;
+  overflow: auto;
+  resize:none;
+}
+
+.editSession .card {
+  padding: 1em;
+}
+
+.editSession .card:hover {
+  background-color: #34393C;
+}
+
+.editSession .cardNote{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardType input, .cardTime input {
+  width: 100%;  
+}
+
+.cardTime input{
+  margin-top: 1em;
+}
+
 .invisible {
   display: none !important;
 }
@@ -70,6 +126,13 @@ font-size: 0.8em;
   display: none;
 }
 
+.editSession ::placeholder {
+  font-size: 1em;
+  text-align: center;
+  position:relative;
+  top: 0.1em;
+}
+
 @media only screen and (max-width: 800px) {
 
   .search {
@@ -101,4 +164,34 @@ font-size: 0.8em;
     max-height: 50px;
     overflow: auto;
   }
+
+   .sessionInputContainer {
+    height: 35%;
+  }
+
+  .editSession input {
+    max-height: 2em;
+  }
+
+  .editSession .cardNote{
+    max-height: 80px;
+  }
+
+  .editSession .cardNote textarea {
+    margin-top: 1em;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      text-align:center;
+      min-width: 70%;
+      overflow: auto;
+      resize:none;
+  }
+
+  .editSession ::placeholder {
+    font-size: 1em;
+    text-align: center;
+    position:relative;
+    top: 0.1em;
+}
 }
