@@ -190,8 +190,6 @@ font-size: 0.8em;
 .editSession ::placeholder {
   font-size: 1em;
   text-align: center;
-  position:relative;
-  top: 0.1em;
 }
 
 @media only screen and (max-width: 800px) {
@@ -294,7 +292,5 @@ font-size: 0.8em;
   .editSession ::placeholder {
     font-size: 1em;
     text-align: center;
-    position:relative;
-    top: 0.1em;
   }
 }
