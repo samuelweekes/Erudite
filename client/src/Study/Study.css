@@ -6,6 +6,24 @@
   align-items: center;
 }
 
+.margin0 img {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.rightArrow, .submit {
+  margin-left: 1em;
+}
+
+.leftArrow {
+  margin-right: 1em;
+}
+
+.buttonContainer {
+  margin-top: 3em;
+  display: flex;
+}
+
 .questionContainer {
   margin-bottom: 20%;
 }
@@ -24,7 +42,6 @@
 
 .rightArrow {
   max-width: 2em;
-  margin-left: 2em;
   transition: all .1s ease-out;
 }
 
@@ -35,7 +52,6 @@
 
 .leftArrow {
   max-width: 2em;
-  margin-right: 2em;
   transition: all .1s ease-out;
 }
 
@@ -46,7 +62,6 @@
 
 .submit {
   max-width: 2em;
-  margin-left: 2em;
   transition: all .1s ease-out;
 }
 
@@ -81,13 +96,28 @@
 }
 
 .reward img {
+  margin-top: 10%;
   max-width: 80%;
 }
 
 @media only screen and (max-width: 1250px) {
   .question {
+    text-align: center;
     color: #34393C;
     font-size: 2em;
     font-weight: 300;
+  }
+
+  .rightArrow, .leftArrow, .submit {
+    margin-left: 1em;
+  }
+
+  .inputContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .inputContainer input, .inputContainer textarea {
+    max-width: 50%;
   }
 }

@@ -51,9 +51,19 @@ export default class Study extends React.Component {
   handleSubmitClick(){
     axios.post('/study', {data: this.state})
     .then(res => {
-      this.setState({reward: res.data.reward});
+      let reward;
+      if(res.data.reward === 0){
+        reward = -1;
+      } else {
+        reward = res.data.reward;
+      }
+      this.setState({reward: reward});
       setTimeout(() => {
-        this.setState({question: questionStates[0], reward: false});
+        this.setState({question: questionStates[0], 
+                       reward: false,
+                       time: '',
+                       type : '',
+                       note: ''});
       }, 3000);
     });
   }

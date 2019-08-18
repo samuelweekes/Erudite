@@ -22,18 +22,21 @@ export default class Question extends React.Component {
         question.text  = 'How long did you study for?';
         question.input = <input className="time" type="time" value={this.props.time} onChange={this.handleTimeChange} />;
         question.rightArrow = rightArrow;
+        question.classes = 'margin0';
         break;
       case 'TYPE':
         question.text  = 'What did you study?';
         question.input = <input className="type" type="text" value={this.props.type} onChange={this.handleTypeChange} />;
         question.leftArrow  = leftArrow;
         question.rightArrow = rightArrow;
+        question.classes = '';
         break;
       case 'NOTES':
         question.text  = 'Any notes for later?';
         question.input = <textarea className="note" value={this.props.note} onChange={this.handleNoteChange}></textarea>;
         question.submit    = submit;
         question.leftArrow = leftArrow;
+        question.classes = '';
         break;
       default:
         return false;
@@ -59,12 +62,13 @@ export default class Question extends React.Component {
       <div className="questionContainer">
         <h1 className="question">{question.text}</h1>
         <div className="inputContainer">
-          <img className="leftArrow" onClick={this.props.handleLeftClick} src={question.leftArrow}></img>
           {question.input}
+        </div>
+        <div className={`buttonContainer ${question.classes}`}>
+          <img className="leftArrow" onClick={this.props.handleLeftClick} src={question.leftArrow}></img>
           <img className="rightArrow" onClick={this.props.handleRightClick} src={question.rightArrow}></img>
           <img className="submit" onClick={this.props.handleSubmitClick} src={question.submit}></img>
         </div>
-        
       </div>
     );
   }

@@ -94,37 +94,40 @@ app.post('/account/reset', function(req, res){
   }); 
 });
 
-app.post('/study', function(req, res){
-  const newStudy      = req.body.data;
-  const maxBalance    = 400;
-  const timeInSeconds = getSecondsFromTime(newStudy.time);
-  const bonus         = getBonus(timeInSeconds);
-  const reward        = getReward(maxBalance, bonus);
-
-  newStudy.time = timeInSeconds;
-  newStudy.reward = reward;
-
-  const updateData = {
-    "$inc": {
-      "account.balance" : -(parseInt(reward,10)),
-      "account.reward"  : +(parseInt(reward,10)),
-      "account.maxReward" : +(parseInt(reward,10))
-      }
-  }
-
-  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
-    if(err){
-      console.log(err);
-        console.log('There was a problem updating account');
-    }
-  }); 
+app.post('/study', async function(req, res){
+  Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
+    if(err){console.log('Couldn\'t retrieve this account')};
+    const newStudy = req.body.data;
+    const accountData   = account.account;
+    const timeInSeconds = getSecondsFromTime(newStudy.time);
+    const bonus         = getBonus(timeInSeconds);
+    const reward        = getReward(accountData.balance, accountData.maxBalance, bonus);
   
-  Mongo.Study.create(newStudy, (err, study) => {
-    if(err){
-      console.log('Couldn\'t add study session');
+    newStudy.time = timeInSeconds;
+    newStudy.reward = reward;
+  
+    const updateData = {
+      "$inc": {
+        "account.balance" : -(parseInt(reward,10)),
+        "account.reward"  : +(parseInt(reward,10)),
+        "account.maxReward" : +(parseInt(reward,10))
+        }
     }
-    res.send(study);
-  });
+  
+    Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err) => {
+      if(err){
+        console.log(err);
+        console.log('There was a problem updating account');
+      }
+    });
+
+    Mongo.Study.create(newStudy, (err, study) => {
+      if(err){
+        console.log('Couldn\'t add study session');
+      }
+      res.send(study);
+    });
+  }); 
 });
 
 function getSecondsFromTime(time){
@@ -141,7 +144,7 @@ function getTimeFromSeconds(seconds){
 }
 
 
-function getReward(maxBalance, bonus=false) {
+function getReward(balance, maxBalance, bonus=false) {
   const max = Math.floor(maxBalance/5);
   const min = Math.floor(maxBalance/35);
   let reward = Math.floor(Math.random() * (max - min) ) + min;
@@ -153,6 +156,10 @@ function getReward(maxBalance, bonus=false) {
   
   if(bonus){
     reward = Math.floor(reward * bonus);
+  }
+
+  if((balance - reward) < 0) {
+    reward = balance;
   }
   
   if(random < rewardModifier){
