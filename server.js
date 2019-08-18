@@ -11,10 +11,6 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/rew', function(req,res){
-  res.send('hello');
-});
-
 app.get('/study', function(req, res){
   Mongo.Study.find({}, (err, study) => {
     if(err){console.log('Couldn\'t retrieve study sessions')};
@@ -33,13 +29,6 @@ app.get('/study', function(req, res){
 
 const hardCodedId = '5d4f1b7fd465d35adc4e762b';
 app.get('/account', function(req, res){
-  Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
-    if(err){console.log('Couldn\'t retrieve this account')};
-    res.send(account.account);
-  });
-});
-
-app.get('/acc', function(req, res){
   Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
     if(err){console.log('Couldn\'t retrieve this account')};
     res.send(account.account);
