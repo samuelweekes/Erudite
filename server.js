@@ -20,7 +20,6 @@ app.get('/study', function(req, res){
       clone.time = getTimeFromSeconds(studySession.time);
       let timestamp = new Date(studySession._id.getTimestamp());
       clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
-      console.log(typeof(clone.date));
       return clone;
     });
 
@@ -34,13 +33,42 @@ app.get('/account', function(req, res){
     if(err){console.log('Couldn\'t retrieve this account')};
     res.send(account.account);
   });
-})
+});
+
+app.post('/reward', function(req, res){
+  const updateData = {
+    "$inc": {
+      "account.reward"    : req.body.balance,
+      "account.maxReward" : req.body.balance
+      }
+  }
+  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(account.account)
+  }); 
+});
 
 app.post('/account', function(req, res){
   const updateData = {
     "$inc": {
       "account.balance" : req.body.balance,
       "account.maxBalance" : req.body.balance
+      }
+  }
+  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(account.account)
+  }); 
+});
+
+app.post('/reward/reset', function(req, res){
+  const updateData = {
+    "$set": {
+      "account.maxReward" : 0
       }
   }
   Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
@@ -79,7 +107,8 @@ app.post('/study', function(req, res){
   const updateData = {
     "$inc": {
       "account.balance" : -(parseInt(reward,10)),
-      // "account.maxBalance" : -(parseInt(reward,10))
+      "account.reward"  : +(parseInt(reward,10)),
+      "account.maxReward" : +(parseInt(reward,10))
       }
   }
 

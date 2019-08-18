@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
   account: {
     balance : Number,
     maxBalance : Number,
+    reward: Number,
+    maxReward: Number
   }
 });
 

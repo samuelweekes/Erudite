@@ -8,26 +8,33 @@ import './Account.css';
 export default class Account extends React.Component {
   constructor(props){
     super(props);
-    this.getBalance = this.getBalance.bind(this);
+    this.getAccountData = this.getAccountData.bind(this);
     this.addBalance = this.addBalance.bind(this);
     this.removeBalance = this.removeBalance.bind(this);
+    this.addReward = this.addReward.bind(this);
+    this.removeReward = this.removeReward.bind(this);
     this.resetBalance = this.resetBalance.bind(this);
+    this.resetReward = this.resetReward.bind(this);
     this.handleBalanceChange = this.handleBalanceChange.bind(this);
-    this.state = {balance: 0, maxBalance: 0, funds: 0};
+    this.handleRewardChange = this.handleRewardChange.bind(this);
+    this.state = {balance: 0, maxBalance: 0, reward: 0, maxReward: 0, funds: 0, rewardFunds: 0};
   }
 
   componentWillMount() {
-    this.getBalance();
+    this.getAccountData();
   }
 
   componentWillReceiveProps(){
-    this.getBalance();
+    this.getAccountData();
   }
 
-  getBalance(){
+  getAccountData(){
     axios.get('/account')
     .then(res => {
-      this.setState({balance : res.data.balance, maxBalance : res.data.maxBalance});
+      this.setState({balance : res.data.balance, 
+                     maxBalance : res.data.maxBalance,
+                     reward: res.data.reward,
+                     maxReward: res.data.maxReward});
     });
   }
 
@@ -50,6 +57,24 @@ export default class Account extends React.Component {
     });
   }
 
+   addReward(){
+    axios.post('/reward', {balance: this.state.rewardFunds})
+    .then(res => {
+      this.setState({reward : res.data.reward, maxReward : res.data.maxReward, rewardFunds: 0});
+    });
+  }
+
+  removeReward(){
+    if((parseInt(this.state.reward,10) - this.state.rewardFunds) < 0) {
+      return;
+    }
+    const negativeFunds = -(parseInt(this.state.rewardFunds, 10));
+    axios.post('/reward', {balance: negativeFunds})
+    .then(res => {
+      this.setState({reward : res.data.reward, maxReward : res.data.maxReward, rewardFunds: 0});
+    });
+  }
+
   resetBalance(){
     axios.post('/account/reset')
     .then(res => {
@@ -57,8 +82,20 @@ export default class Account extends React.Component {
     });
   }
 
+  resetReward(){
+    axios.post('/reward/reset')
+    .then(res => {
+      this.setState({maxReward : res.data.maxBalance, rewardFunds: 0});
+    });
+  }
+  
+
   handleBalanceChange(event){
     this.setState({funds: event.target.value});
+  }
+
+  handleRewardChange(event){
+    this.setState({rewardFunds: event.target.value});
   }
 
   render(){
@@ -70,10 +107,10 @@ export default class Account extends React.Component {
         <div className="balanceContainer">
           <div className="balance">
             <div className="max">
-              <span>{this.state.balance}</span>
+              <span>{this.state.maxBalance}</span>
             </div>
             <div className="current">
-              <span>{this.state.maxBalance}</span>
+              <span>{this.state.balance}</span>
             </div>
             <div className="buttonContainer">
               <div className="buttonGroup">
@@ -90,18 +127,21 @@ export default class Account extends React.Component {
         <div className="rewardContainer">
           <div className="reward">
             <div className="max">
-              <span>278</span>
+              <span>{this.state.maxReward}</span>
             </div>
             <div className="current">
-              <span>126</span>
+              <span>{this.state.reward}</span>
             </div>
             <div className="buttonContainer">
               <div className="buttonGroup">
-                <img src={minus}></img>
-                <input className="balanceInput" min="0" type="number"></input>
-                <img src={plus}></img>
+                <img onClick={this.removeReward} src={minus}></img>
+                <input className="rewardInput" min="0" type="number" value={this.state.rewardFunds} onChange={this.handleRewardChange}></input>
+                <img onClick={this.addReward} src={plus}></img>
               </div>
             </div>
+            <div className="resetButton">
+                <img onClick={this.resetReward} src={reset}></img>
+              </div>
           </div>
         </div>
       </div>
