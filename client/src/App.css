@@ -15,6 +15,34 @@ body, body input, body textarea {
   background-color: #6F90A1;
 }
 
+::-webkit-input-placeholder {
+    font-size: 0.5em;
+    text-align: center;
+    position:relative;
+    bottom: 0.4em;
+}
+
+::-moz-placeholder {
+    font-size: 0.5em;
+    text-align: center;
+    position:relative;
+    bottom: 0.4em;
+}
+
+:-ms-input-placeholder {
+    font-size: 0.5em;
+    text-align: center;
+    position:relative;
+    bottom: 0.4em;
+}
+
+::-ms-input-placeholder {
+    font-size: 0.5em;
+    text-align: center;
+    position:relative;
+    bottom: 0.4em;
+}
+
 ::placeholder {
     font-size: 0.5em;
     text-align: center;
@@ -29,4 +57,3 @@ body, body input, body textarea {
     background-color: #6F90A1;
   }
 }
-

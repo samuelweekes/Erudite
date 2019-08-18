@@ -1,9 +1,15 @@
 .study {
   height: 100%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .margin0 img {
@@ -21,6 +27,8 @@
 
 .buttonContainer {
   margin-top: 3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -29,8 +37,12 @@
 }
 
 .inputContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 3em;
 }
 
@@ -42,32 +54,44 @@
 
 .rightArrow {
   max-width: 2em;
+  -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
 }
 
 .rightArrow:hover {
   cursor:pointer;
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .leftArrow {
   max-width: 2em;
+  -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
 }
 
 .leftArrow:hover {
   cursor:pointer;
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .submit {
   max-width: 2em;
+  -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
 }
 
 .submit:hover {
   cursor:pointer;
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .time, .type, .note {
@@ -90,9 +114,15 @@
 }
 
 .reward {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .reward img {
@@ -113,8 +143,12 @@
   }
 
   .inputContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 
   .inputContainer input, .inputContainer textarea {

@@ -1,31 +1,56 @@
 .session {
   height: 100%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .sessionInputContainer {
   width: 100%;
   height: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .display {
   width: 100%;
   height: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction:column;
-  align-items: center;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+      -ms-flex-direction:column;
+          flex-direction:column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   overflow: auto;
 }
 
 .editSession{
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction:column;  
-  align-items: center;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+      -ms-flex-direction:column;
+          flex-direction:column;  
+  -webkit-box-align: center;  
+      -ms-flex-align: center;  
+          align-items: center;
 }
 
 .editButtons img {
@@ -64,9 +89,15 @@
 }
 
 .editSession .cardNote{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .cardType input, .cardTime input {
@@ -91,6 +122,8 @@
 }
 
 .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   border-radius: 10px;
   width: 80%;
@@ -126,6 +159,34 @@ font-size: 0.8em;
   display: none;
 }
 
+.editSession ::-webkit-input-placeholder {
+  font-size: 1em;
+  text-align: center;
+  position:relative;
+  top: 0.1em;
+}
+
+.editSession ::-moz-placeholder {
+  font-size: 1em;
+  text-align: center;
+  position:relative;
+  top: 0.1em;
+}
+
+.editSession :-ms-input-placeholder {
+  font-size: 1em;
+  text-align: center;
+  position:relative;
+  top: 0.1em;
+}
+
+.editSession ::-ms-input-placeholder {
+  font-size: 1em;
+  text-align: center;
+  position:relative;
+  top: 0.1em;
+}
+
 .editSession ::placeholder {
   font-size: 1em;
   text-align: center;
@@ -151,12 +212,17 @@ font-size: 0.8em;
   }
   
   .card {
-    justify-content: center;
-    flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 
   .cardNote {
-    order: 5;
+    -webkit-box-ordinal-group: 6;
+        -ms-flex-order: 5;
+            order: 5;
   }
 
   .center {
@@ -192,10 +258,38 @@ font-size: 0.8em;
       resize:none;
   }
 
+  .editSession ::-webkit-input-placeholder {
+    font-size: 1em;
+    text-align: center;
+    position:relative;
+    top: 0.1em;
+  }
+
+  .editSession ::-moz-placeholder {
+    font-size: 1em;
+    text-align: center;
+    position:relative;
+    top: 0.1em;
+  }
+
+  .editSession :-ms-input-placeholder {
+    font-size: 1em;
+    text-align: center;
+    position:relative;
+    top: 0.1em;
+  }
+
+  .editSession ::-ms-input-placeholder {
+    font-size: 1em;
+    text-align: center;
+    position:relative;
+    top: 0.1em;
+  }
+
   .editSession ::placeholder {
     font-size: 1em;
     text-align: center;
     position:relative;
     top: 0.1em;
-}
+  }
 }

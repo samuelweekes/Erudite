@@ -15,7 +15,13 @@
   margin-left: 5%;
   margin-top: 5%;
   height: 90%;
-  animation: fadein 2s;
+  -webkit-animation: fadein 2s;
+          animation: fadein 2s;
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes fadein {
@@ -25,8 +31,12 @@
 
 .imgSeperator {
   margin-top: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .imgLine {
@@ -36,33 +46,52 @@
 .linkContainer {
   margin-top : 10%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .linkContainer ul {
   width: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
 }
 
 .linkContainer li {
   list-style : none;
   margin-top : 1.3em;
+  -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
 }
 
 .linkContainer li:hover {
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .seperator {
   margin-top: 1.3em;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .line {
@@ -98,7 +127,9 @@
     left: 25px;
     z-index: 1;
     -webkit-user-select: none;
-    user-select: none;
+    -moz-user-select: none;
+     -ms-user-select: none;
+         user-select: none;
   }
   
   .menuToggle input  {
@@ -123,32 +154,57 @@
     background: #ffffff;
     border-radius: 3px;
     z-index: 1;
-    transform-origin: 4px 0px;
+    -webkit-transform-origin: 4px 0px;
+        -ms-transform-origin: 4px 0px;
+            transform-origin: 4px 0px;
+    -webkit-transition: background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    opacity 0.55s ease,
+    -webkit-transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    transition: background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    opacity 0.55s ease,
+    -webkit-transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    -o-transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    opacity 0.55s ease;
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
     background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
     opacity 0.55s ease;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    opacity 0.55s ease,
+    -webkit-transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
   }
   
   .menuToggle span:first-child  {
-    transform-origin: 0% 0%;
+    -webkit-transform-origin: 0% 0%;
+        -ms-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
   }
   
   .menuToggle span:nth-last-child(1)  {
-    transform-origin: 0% 100%;
+    -webkit-transform-origin: 0% 100%;
+        -ms-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
   }
   
   .menuToggle input:checked ~ span  {
     opacity: 1;
-    transform: rotate(45deg) translate(-2px, -1px);
+    -webkit-transform: rotate(45deg) translate(-2px, -1px);
+        -ms-transform: rotate(45deg) translate(-2px, -1px);
+            transform: rotate(45deg) translate(-2px, -1px);
     background: #ffffff;
   }
   
   .menuToggle input:checked ~ span:nth-last-child(2)  {
     opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
+    -webkit-transform: rotate(0deg) scale(0.2, 0.2);
+        -ms-transform: rotate(0deg) scale(0.2, 0.2);
+            transform: rotate(0deg) scale(0.2, 0.2);
   }
   
   .menuToggle input:checked ~ span:nth-last-child(1)  {
-    transform: rotate(-45deg) translate(0, -1px);
+    -webkit-transform: rotate(-45deg) translate(0, -1px);
+        -ms-transform: rotate(-45deg) translate(0, -1px);
+            transform: rotate(-45deg) translate(0, -1px);
   }
 }
