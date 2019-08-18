@@ -1,14 +1,14 @@
 const express = require('express');
 const path = require('path');
 const Mongo = require('./models/index');
-require("dotenv").config();
 
 const app = express();
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.get('/study', function(req, res){
@@ -20,7 +20,6 @@ app.get('/study', function(req, res){
       clone.time = getTimeFromSeconds(studySession.time);
       let timestamp = new Date(studySession._id.getTimestamp());
       clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
-      console.log(typeof(clone.date));
       return clone;
     });
 
@@ -28,22 +27,95 @@ app.get('/study', function(req, res){
   });
 });
 
-const hardCodedId = '5d548a1399511da77268b222';
+const hardCodedId = '5d59bbcb6cb1fc64ff79ad34';
 app.get('/account', function(req, res){
   Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
-    if(err){
-      console.log('Couldn\'t retrieve this account'); 
-      return;
-    };
-      res.send(account.account);
+    if(err){console.log('Couldn\'t retrieve this account')};
+    res.send(account.account);
   });
-})
+});
+
+app.post('/study/session', function(req, res){
+  Mongo.Study.findOne({_id : req.body.id}, (err, study) => {
+    if(err){console.log('Couldn\'t retrieve this account')};
+      const clone = {...study.toObject()}
+      clone.time = getTimeFromSeconds(study.time);
+      let timestamp = new Date(study._id.getTimestamp());
+      clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
+    res.send(clone);
+  });
+});
+
+app.post('/study/session/edit', function(req, res){
+  const updateData = {
+    "$set": {
+      "time" : getSecondsFromTime(req.body.time),
+      "type" : req.body.type,
+      "note" : req.body.note,
+      }
+  }
+  Mongo.Study.findByIdAndUpdate(req.body.id, updateData, {new:true}, (err, study) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(study)
+  }); 
+});
+
+app.post('/study/session/delete', function(req, res){
+  Mongo.Study.findByIdAndRemove(req.body.id, (err, study) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(study)
+  }); 
+});
+
+app.post('/study/session/edit', function(req, res){
+  Mongo.Study.findOne({_id : req.body.id}, (err, study) => {
+    if(err){console.log('Couldn\'t retrieve this account')};
+      const clone = {...study.toObject()}
+      clone.time = getTimeFromSeconds(study.time);
+      let timestamp = new Date(study._id.getTimestamp());
+      clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
+    res.send(clone);
+  });
+});
+
+app.post('/reward', function(req, res){
+  const updateData = {
+    "$inc": {
+      "account.reward"    : req.body.balance,
+      "account.maxReward" : req.body.balance > 0 ? req.body.balance : 0
+      }
+  }
+  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(account.account)
+  }); 
+});
 
 app.post('/account', function(req, res){
   const updateData = {
     "$inc": {
       "account.balance" : req.body.balance,
       "account.maxBalance" : req.body.balance
+      }
+  }
+  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+    if(err){
+        console.log('There was a problem updating account');
+    }
+    res.send(account.account)
+  }); 
+});
+
+app.post('/account/resetreward', function(req, res){
+  const updateData = {
+    "$set": {
+      "account.maxReward" : 0
       }
   }
   Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
@@ -69,36 +141,40 @@ app.post('/account/reset', function(req, res){
   }); 
 });
 
-app.post('/study', function(req, res){
-  const newStudy      = req.body.data;
-  const maxBalance    = 400;
-  const timeInSeconds = getSecondsFromTime(newStudy.time);
-  const bonus         = getBonus(timeInSeconds);
-  const reward        = getReward(maxBalance, bonus);
-
-  newStudy.time = timeInSeconds;
-  newStudy.reward = reward;
-
-  const updateData = {
-    "$inc": {
-      "account.balance" : -(parseInt(reward,10)),
-      // "account.maxBalance" : -(parseInt(reward,10))
-      }
-  }
-
-  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
-    if(err){
-      console.log(err);
-        console.log('There was a problem updating account');
-    }
-  }); 
+app.post('/study', async function(req, res){
+  Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
+    if(err){console.log('Couldn\'t retrieve this account')};
+    const newStudy = req.body.data;
+    const accountData   = account.account;
+    const timeInSeconds = getSecondsFromTime(newStudy.time);
+    const bonus         = getBonus(timeInSeconds);
+    const reward        = getReward(accountData.balance, accountData.maxBalance, bonus);
   
-  Mongo.Study.create(newStudy, (err, study) => {
-    if(err){
-      console.log('Couldn\'t add study session');
+    newStudy.time = timeInSeconds;
+    newStudy.reward = reward;
+  
+    const updateData = {
+      "$inc": {
+        "account.balance" : -(parseInt(reward,10)),
+        "account.reward"  : +(parseInt(reward,10)),
+        "account.maxReward" : +(parseInt(reward,10))
+        }
     }
-    res.send(study);
-  });
+  
+    Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err) => {
+      if(err){
+        console.log(err);
+        console.log('There was a problem updating account');
+      }
+    });
+
+    Mongo.Study.create(newStudy, (err, study) => {
+      if(err){
+        console.log('Couldn\'t add study session');
+      }
+      res.send(study);
+    });
+  }); 
 });
 
 function getSecondsFromTime(time){
@@ -115,7 +191,7 @@ function getTimeFromSeconds(seconds){
 }
 
 
-function getReward(maxBalance, bonus=false) {
+function getReward(balance, maxBalance, bonus=false) {
   const max = Math.floor(maxBalance/5);
   const min = Math.floor(maxBalance/35);
   let reward = Math.floor(Math.random() * (max - min) ) + min;
@@ -127,6 +203,10 @@ function getReward(maxBalance, bonus=false) {
   
   if(bonus){
     reward = Math.floor(reward * bonus);
+  }
+
+  if((balance - reward) < 0) {
+    reward = balance;
   }
   
   if(random < rewardModifier){
@@ -158,4 +238,4 @@ Mongo.connectDb().then(async () => {
   app.listen(process.env.PORT || 8000, function() {
     console.log(`App listening on port ${process.env.PORT} or on port 8000`);
   });
-})
+});
