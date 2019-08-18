@@ -39,6 +39,13 @@ app.get('/account', function(req, res){
   });
 });
 
+app.get('/acc', function(req, res){
+  Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
+    if(err){console.log('Couldn\'t retrieve this account')};
+    res.send(account.account);
+  });
+});
+
 app.post('/study/session', function(req, res){
   Mongo.Study.findOne({_id : req.body.id}, (err, study) => {
     if(err){console.log('Couldn\'t retrieve this account')};
