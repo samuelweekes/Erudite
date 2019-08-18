@@ -2,10 +2,10 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './Navbar/Navbar.js';
 import Study from './Study/Study.js';
+import Session from './Session/Session.js';
+// import {Stat} from './Stat/Stat.js';
 import Account from './Account/Account.js';
 import './App.css';
-// import {Sorter} from './Sorter/Sorter.js';
-// import {DopaStudy} from './DopaStudy.js';
 
 
 class App extends React.Component {
@@ -18,7 +18,7 @@ class App extends React.Component {
             <Switch>
               <Route exact component={Study} path="/" />
               <Route component={Account} path="/account" />
-              <Route exact component={Account} path="/sessions" />
+              <Route exact component={Session} path="/sessions" />
               <Route exact component={Account} path="/stats" /> />
             </Switch>
           </div>
