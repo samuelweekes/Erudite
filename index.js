@@ -1,14 +1,14 @@
 const express = require('express');
 const path = require('path');
 const Mongo = require('./models/index');
+require("dotenv").config();
 
 const app = express();
-
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 app.get('/study', function(req, res){
@@ -20,6 +20,7 @@ app.get('/study', function(req, res){
       clone.time = getTimeFromSeconds(studySession.time);
       let timestamp = new Date(studySession._id.getTimestamp());
       clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
+      console.log(typeof(clone.date));
       return clone;
     });
 
