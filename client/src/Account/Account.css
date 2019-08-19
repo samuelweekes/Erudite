@@ -240,8 +240,9 @@
   }
 
   .reward .max {
-    margin-bottom:10%;
-    margin-right: 10%;
+    position:relative;
+    bottom: 10%;
+    right: 10%;
   }
 
   .triangle {
