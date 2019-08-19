@@ -5,6 +5,10 @@
   height:100vh
 }
 
+.mobile-nav {
+  display:none;
+}
+
 .imgOuter {
   width: 100%;
   height: 200px;
@@ -110,6 +114,10 @@
     padding-bottom: 10%;
     position: absolute;
     display: block !important;
+  }
+
+  .mobile-nav {
+    display:block;
   }
 
   .linkContainer ul {

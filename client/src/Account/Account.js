@@ -1,9 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import plus  from '../assets/plus.svg';
-import minus from '../assets/minus.svg';
-import reset from '../assets/reset.svg';
-import { FaPlus, FaMinus } from 'react-icons/fa';
+import { FaPlus, FaMinus, FaRedo } from 'react-icons/fa';
 import './Account.css';
 
 export default class Account extends React.Component {
@@ -115,14 +112,14 @@ export default class Account extends React.Component {
             </div>
             <div className="buttonContainer">
               <div className="buttonGroup">
-                <img onClick={this.removeBalance} src={minus}></img>
+                <button className="minusButton" onClick={this.removeBalance}><FaMinus></FaMinus></button>
                 <input className="balanceInput" min="0" type="number" value={this.state.funds} onChange={this.handleBalanceChange}></input>
-                <img onClick={this.addBalance} src={plus}></img>
+                <button className="plusButton" onClick={this.addBalance}><FaPlus></FaPlus></button>
               </div>
             </div>
             <div className="resetButton">
-                <img onClick={this.resetBalance} src={reset}></img>
-              </div>
+              <div className="resetButton" onClick={this.resetBalance}><FaRedo></FaRedo></div>
+            </div>
           </div>
         </div>
         <div className="rewardContainer">
@@ -141,8 +138,8 @@ export default class Account extends React.Component {
               </div>
             </div>
             <div className="resetButton">
-                <img onClick={this.resetReward} src={reset}></img>
-              </div>
+              <div onClick={this.resetReward}><FaRedo></FaRedo></div>
+            </div>
           </div>
         </div>
       </div>

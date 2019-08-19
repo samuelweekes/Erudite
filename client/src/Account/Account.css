@@ -19,10 +19,6 @@
   height: 1.5em;
 }
 
-.plusButton:hover, .minusButton:hover {
-  color: red;
-}
-
 .balanceContainer, .rewardContainer {
   width: 50%;
   display: -webkit-box;
@@ -106,7 +102,7 @@
     line-height: 1em;
   }
 
-  .reward .buttonGroup{
+  .buttonGroup{
     margin-top : 2em;
   }
 
@@ -136,10 +132,11 @@
   }
 
   .resetButton {
-    margin-top: 2em;
+    margin-top: 1em;
+    font-size: 20pt;
   }
 
-  .resetButton img {
+  .resetButton svg {
     max-width: 2em;
     -webkit-transition: -webkit-transform .8s ease-in-out;
     transition: -webkit-transform .8s ease-in-out;
@@ -148,7 +145,7 @@
     transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out;
   }
 
-  .resetButton img:hover {
+  .resetButton svg:hover {
     cursor:pointer;
     -webkit-transform: rotate(360deg);
         -ms-transform: rotate(360deg);
@@ -196,12 +193,32 @@
             flex-direction: row;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+        overflow-x: hidden;
   }
 
   .balanceContainer{
     width: 100%;
-    padding-top: 20%;
+    max-width: 100vw;
     height: 80vh;
+    background-color: #6F90A1;
+    padding: 0;
+  }
+
+  .balance {
+    margin-top: 20%;
+  }
+
+  .balance .current {
+    font-size: 6em;
+  }
+
+  .balance .max {
+    justify-content: center;
+    font-size: 2em;
+  }
+
+  .balance .max span {
+    margin-left: 40%;
   }
   .rewardContainer{
     width: 100%;
@@ -212,19 +229,7 @@
             justify-content: center;
   }
 
-  .balance {
-    margin-right: 5%;
-  }
-
   .triangle {
-    z-index: 3;
-    width: 0;
-    height: 0;
-    position:absolute;
-    right: 3%;
-    bottom: -90%;
-    border-style: solid;
-    border-width: 0 0 80vh 80vw;
-    border-color: transparent transparent #AA8B39 transparent;
+    display:none;
   }
 }
