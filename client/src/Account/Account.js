@@ -3,6 +3,7 @@ import axios from 'axios';
 import plus  from '../assets/plus.svg';
 import minus from '../assets/minus.svg';
 import reset from '../assets/reset.svg';
+import { FaPlus, FaMinus } from 'react-icons/fa';
 import './Account.css';
 
 export default class Account extends React.Component {
@@ -134,9 +135,9 @@ export default class Account extends React.Component {
             </div>
             <div className="buttonContainer">
               <div className="buttonGroup">
-                <img onClick={this.removeReward} src={minus}></img>
+                <button className="minusButton" onClick={this.removeReward}><FaMinus></FaMinus></button>
                 <input className="rewardInput" min="0" type="number" value={this.state.rewardFunds} onChange={this.handleRewardChange}></input>
-                <img onClick={this.addReward} src={plus}></img>
+                <button className="plusButton" onClick={this.addReward}><FaPlus></FaPlus></button>
               </div>
             </div>
             <div className="resetButton">

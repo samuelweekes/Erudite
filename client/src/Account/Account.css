@@ -6,6 +6,23 @@
   display: flex;
 }
 
+.plusButton, .minusButton {
+  background-color: #34393C;
+  color: white;
+  border: none;
+  width: 5em;
+  height: 3em;
+  border-radius: 10px;
+}
+
+.rewardInput {
+  height: 1.5em;
+}
+
+.plusButton:hover, .minusButton:hover {
+  color: red;
+}
+
 .balanceContainer, .rewardContainer {
   width: 50%;
   display: -webkit-box;
@@ -107,7 +124,8 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 60%;
+    width: 80%;
+    align-items: center;
     -ms-flex-pack: distribute;
         justify-content: space-around;
   }
