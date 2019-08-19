@@ -53,7 +53,7 @@ body, body input, body textarea {
   .App {
     height: 100vh;
     background-color: #6F90A1;
-    overflow:hidden;
+    overscroll-behavior: none;
   }
 
   .container {

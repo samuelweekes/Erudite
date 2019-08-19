@@ -240,8 +240,6 @@
   }
 
   .reward .max {
-    margin-bottom:10%;
-    margin-right: 10%;
   }
 
   .triangle {
@@ -249,6 +247,6 @@
   }
 
   .resetButton {
-    margin-top: 30%;
+    margin-top: 10%;
   }
 }
