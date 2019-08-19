@@ -228,4 +228,9 @@
         -ms-transform: rotate(-45deg) translate(0, -1px);
             transform: rotate(-45deg) translate(0, -1px);
   }
+
+  .img {
+    -webkit-animation: none;
+            animation: none;
+  }
 }

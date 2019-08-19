@@ -46,6 +46,8 @@ body, body input, body textarea {
 ::placeholder {
     font-size: 0.5em;
     text-align: center;
+    position:relative;
+    bottom: 0.4em;
 }
 
 @media only screen and (max-width: 1250px) {
@@ -58,7 +60,6 @@ body, body input, body textarea {
   .container {
     height: 90%;
     width: 100%;
-    padding-top:15%;
     margin : 0;
     background-color: #6F90A1;
   }
