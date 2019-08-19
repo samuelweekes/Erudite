@@ -30,10 +30,10 @@ class Navbar extends React.Component {
       case '/account':
         img = account;
       break;
-      case '/sessions':
+      case '/session':
         img = sessions;
       break;
-      case '/stats':
+      case '/stat':
         img = stats;
       break;
       default:
