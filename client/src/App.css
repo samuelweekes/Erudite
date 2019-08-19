@@ -62,5 +62,10 @@ body, body input, body textarea {
     padding-top:15%;
     margin : 0;
     background-color: #6F90A1;
+    overscroll-behavior: none;
+  }
+
+  body {
+    overscroll-behavior: none;
   }
 }
