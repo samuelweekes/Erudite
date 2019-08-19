@@ -67,5 +67,12 @@ body, body input, body textarea {
 
   body {
     overscroll-behavior: none !important;
+    height: 100%;
+    overflow: auto;
+  }
+
+  html {
+    overflow: hidden;
+    height: 100%;
   }
 }

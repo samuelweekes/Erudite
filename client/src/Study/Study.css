@@ -142,8 +142,8 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 50%;
-    max-width: 80vw;
+    width: 70%;
+    max-width: 90vw;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
