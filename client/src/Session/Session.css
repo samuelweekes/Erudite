@@ -7,7 +7,8 @@
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
-      overflow: scroll;
+      overflow-x: hidden;
+    overflow-y: scroll;
           flex-direction: column;
 }
 
