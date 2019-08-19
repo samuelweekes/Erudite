@@ -106,7 +106,6 @@
 @media only screen and (max-width: 1250px) {
   .showMenu {
     width: 50%;
-    height: 50%;
     position: absolute;
     display: block !important;
   }
