@@ -17,8 +17,8 @@ class App extends React.Component {
             <Switch>
               <Route exact component={Study} path="/" />
               <Route component={Account} path="/account" />
-              <Route exact component={Session} path="/sessions" />
-              <Route exact component={Stat} path="/stats" /> />
+              <Route exact component={Session} path="/session" />
+              <Route exact component={Stat} path="/stat" /> />
             </Switch>
           </div>
         </Router>

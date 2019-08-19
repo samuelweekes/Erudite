@@ -30,7 +30,7 @@ export default class Account extends React.Component {
   }
 
   getAccountData(){
-    axios.get('/account')
+    axios.get('/data/account')
     .then(res => {
       this.setState({balance : res.data.balance, 
                      maxBalance : res.data.maxBalance,
@@ -40,7 +40,7 @@ export default class Account extends React.Component {
   }
 
   addBalance(){
-    axios.post('/account', {balance: this.state.funds})
+    axios.post('data/account/', {balance: this.state.funds})
     .then(res => {
       this.setState({balance : res.data.balance, maxBalance : res.data.maxBalance, funds: 0});
     });
@@ -52,14 +52,14 @@ export default class Account extends React.Component {
       return;
     }
     const negativeFunds = -(parseInt(this.state.funds, 10));
-    axios.post('/account', {balance: negativeFunds})
+    axios.post('/data/account/', {balance: negativeFunds})
     .then(res => {
       this.setState({balance : res.data.balance, maxBalance : res.data.maxBalance, funds: 0});
     });
   }
 
    addReward(){
-    axios.post('/reward', {balance: this.state.rewardFunds})
+    axios.post('/data/account/reward', {balance: this.state.rewardFunds})
     .then(res => {
       this.setState({reward : res.data.reward, maxReward : res.data.maxReward, rewardFunds: 0});
     });
@@ -70,21 +70,21 @@ export default class Account extends React.Component {
       return;
     }
     const negativeFunds = -(parseInt(this.state.rewardFunds, 10));
-    axios.post('/reward', {balance: negativeFunds})
+    axios.post('/data/account/reward', {balance: negativeFunds})
     .then(res => {
       this.setState({reward : res.data.reward, maxReward : res.data.maxReward, rewardFunds: 0});
     });
   }
 
   resetBalance(){
-    axios.post('/account/reset')
+    axios.post('/data/account/reset')
     .then(res => {
       this.setState({balance : res.data.balance, maxBalance : res.data.maxBalance, funds: 0});
     });
   }
 
   resetReward(){
-    axios.post('/account/resetreward')
+    axios.post('/data/account/resetreward')
     .then(res => {
       this.setState({maxReward : res.data.maxReward, rewardFunds: 0});
     });

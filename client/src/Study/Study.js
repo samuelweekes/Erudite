@@ -49,7 +49,7 @@ export default class Study extends React.Component {
   }
 
   handleSubmitClick(){
-    axios.post('/study', {data: this.state})
+    axios.post('/data/study/', {data: this.state})
     .then(res => {
       let reward;
       if(res.data.reward === 0){

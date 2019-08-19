@@ -27,7 +27,7 @@ export default class EditSession extends React.Component {
     }
 
     getSessionData(){
-      axios.post('/study/session', {id: this.props.id})
+      axios.get(`/data/session/${this.props.id}`)
       .then(res => {
         const studySession = res.data;
         this.setState({...studySession});
@@ -47,14 +47,14 @@ export default class EditSession extends React.Component {
     }
 
     handleDelete(){
-      axios.post('/study/session/delete', {id: this.props.id})
+      axios.delete('/data/session/delete', {data:{id:this.props.id}})
       .then(res => {
         this.props.handleReset();
       });
     }
 
     handleSubmit(){
-      axios.post('/study/session/edit', {id: this.props.id, ...this.state})
+      axios.post('/data/session/edit', {id: this.props.id, ...this.state})
       .then(res => {
         this.props.handleReset();
       });

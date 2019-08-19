@@ -42,9 +42,9 @@ class Navbar extends React.Component {
 
     return (
       <div>
-        <nav onClick={this.toggleMenu} className="mobile-nav" role="navigation">
+        <nav className="mobile-nav" role="navigation">
           <div className="menuToggle">
-            <input id="navCheck" type="checkbox" />
+            <input id="navCheck" type="checkbox" onClick={this.toggleMenu} />
             <span className="mobile-span"></span>
             <span className="mobile-span"></span>
             <span className="mobile-span"></span>
@@ -77,13 +77,13 @@ class Navbar extends React.Component {
                   <hr className="line"/>
                 </div>
                 <li>
-                  <Link className="" onClick={this.toggleMenu} to="/sessions">Sessions</Link>
+                  <Link className="" onClick={this.toggleMenu} to="/session">Sessions</Link>
                 </li>
                 <div className="seperator"> 
                   <hr className="line"/>
                 </div>
                 <li>
-                  <Link className="" onClick={this.toggleMenu} to="/stats">Stats</Link>
+                  <Link className="" onClick={this.toggleMenu} to="/stat">Stats</Link>
                 </li>
               </ul>
             </div>

@@ -24,7 +24,7 @@ export default class Session extends React.Component {
   }
 
   getSessions(){
-    axios.get('/studyrow')
+    axios.get('/data/session')
     .then(res => {
       const studySessions = res.data;
       this.setState({sessions: studySessions});
