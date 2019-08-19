@@ -193,7 +193,7 @@
     flex-direction: row;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    overflow: hidden;
+    overflow: scroll;
     justify-content: center;
   }
 
