@@ -11,7 +11,7 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
-app.get('/study/sessions', function(req, res){
+app.get('/studyrow', function(req, res){
   Mongo.Study.find({}, (err, study) => {
     if(err){console.log('Couldn\'t retrieve study sessions')};
 

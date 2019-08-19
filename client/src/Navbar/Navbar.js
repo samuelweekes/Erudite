@@ -50,7 +50,7 @@ class Navbar extends React.Component {
             <span className="mobile-span"></span>
           </div>
         </nav>
-        <nav className={`navBar${this.state.mobileMenu ? ' fullScreenMenu' : ''}`} >
+        <nav className={`navBar${this.state.mobileMenu ? ' showMenu' : ''}`} >
           <div className="outerContainer">
             <div>
               <div className="imgOuter">
