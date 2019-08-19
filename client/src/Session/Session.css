@@ -53,11 +53,13 @@
           align-items: center;
 }
 
-.editButtons img {
-   width: 2em;
-   margin-left: 2em;
-   margin-right: 2em;
-   margin-top: 1em;
+.editButtons {
+   font-size: 2em;
+   color: #34393C;
+   width: 100%;
+   max-width: 30vw;
+   display:flex;
+   justify-content: space-around;
    cursor: pointer;
 }
 
@@ -87,6 +89,46 @@
 .editSession .card:hover {
   background-color: #34393C;
 }
+
+.sessionSubmit svg {
+  color: #34393C;
+  -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
+  transition: all .1s ease-out;
+}
+
+.editButtons .sessionSubmit svg:hover {
+  cursor:pointer;
+  color: #29784E;
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.editButtons:hover {
+  cursor: default;
+}
+
+.sessionReset svg {
+  max-width: 2em;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition: -webkit-transform .8s ease-in-out;
+  -o-transition: transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+  transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out;
+}
+
+.editButtons .sessionReset svg:hover {
+  cursor:pointer;
+  -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+.editButtons .sessionBack svg:hover {
+  cursor:pointer;
+}
+
 
 .editSession .cardNote{
   display: -webkit-box;
@@ -243,6 +285,10 @@ font-size: 0.8em;
   }
 
   .editSession .card {
+    margin-top: 20%;
+  }
+
+  .display {
     margin-top: 10%;
   }
 
@@ -293,4 +339,8 @@ font-size: 0.8em;
     font-size: 1em;
     text-align: center;
   }
+
+  .editButtons {
+    max-width: 60vw;
+ }
 }

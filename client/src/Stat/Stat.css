@@ -1,6 +1,7 @@
 .stat {
   height: 100%;
   width: 100%;
+  overflow: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

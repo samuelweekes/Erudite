@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import leftArrow  from '../assets/leftArrow.svg';
-import submit     from '../assets/submit.svg';
-import reset from '../assets/reset.svg';
+import {FaRedo, FaArrowLeft, FaCheck, FaLeaf} from 'react-icons/fa';
 
 export default class EditSession extends React.Component {
     constructor(props){
@@ -81,9 +79,9 @@ export default class EditSession extends React.Component {
               </div>
             </div>
             <div className="editButtons">
-              <img onClick={this.props.handleReset} src={leftArrow}></img>
-              <img onClick={this.handleDelete} src={reset}></img>
-              <img onClick={this.handleSubmit} src={submit}></img>
+              <div className="sessionBack" onClick={this.props.handleReset}><FaArrowLeft></FaArrowLeft></div>
+              <div className="sessionReset" onClick={this.handleDelete}><FaRedo></FaRedo></div>
+              <div className="sessionSubmit" onClick={this.handleSubmit}><FaCheck></FaCheck></div>
             </div>
           </div>
         );

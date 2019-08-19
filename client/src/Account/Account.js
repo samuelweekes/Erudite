@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { FaPlus, FaMinus, FaRedo } from 'react-icons/fa';
+import {FaPlus, FaMinus, FaRedo} from 'react-icons/fa';
 import './Account.css';
 
 export default class Account extends React.Component {
