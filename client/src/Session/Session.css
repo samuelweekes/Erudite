@@ -129,7 +129,6 @@
   cursor:pointer;
 }
 
-
 .editSession .cardNote{
   display: -webkit-box;
   display: -ms-flexbox;
@@ -289,7 +288,7 @@ font-size: 0.8em;
   }
 
   .display {
-    margin-top: 10%;
+    margin-top: 20%;
   }
 
   .editSession .cardNote{
