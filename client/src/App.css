@@ -49,8 +49,15 @@ body, body input, body textarea {
 }
 
 @media only screen and (max-width: 1250px) {
+
+  .App {
+    height: 100vh;
+    background-color: #6F90A1;
+  }
   .container {
-    width: 100vw;
+    height: 90%;
+    width: 100%;
+    padding-top:15%;
     margin : 0;
     background-color: #6F90A1;
   }

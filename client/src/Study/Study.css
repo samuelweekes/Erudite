@@ -17,29 +17,28 @@
   margin-right: 0 !important;
 }
 
-.rightArrow, .submit {
-  margin-left: 1em;
-}
-
-.leftArrow {
-  margin-right: 1em;
-}
-
-.buttonContainer {
-  margin-top: 3em;
+.studyButtonContainer {
+  font-size: 2em;
+  margin-top: 5%;
+  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: space-around;
 }
 
 .questionContainer {
   margin-bottom: 20%;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
 }
 
 .inputContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -53,7 +52,6 @@
 }
 
 .rightArrow {
-  max-width: 2em;
   -webkit-transition: all .1s ease-out;
   -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
@@ -67,7 +65,6 @@
 }
 
 .leftArrow {
-  max-width: 2em;
   -webkit-transition: all .1s ease-out;
   -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
@@ -81,7 +78,6 @@
 }
 
 .submit {
-  max-width: 2em;
   -webkit-transition: all .1s ease-out;
   -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
@@ -89,6 +85,7 @@
 
 .submit:hover {
   cursor:pointer;
+  color: #29784E;
   -webkit-transform: scale(1.2);
       -ms-transform: scale(1.2);
           transform: scale(1.2);
@@ -106,7 +103,7 @@
 }
 
 .time {
-  min-width: 45%;
+  min-width: 50%;
 }
 
 .time:focus, .type:focus, .note:focus {
@@ -138,20 +135,17 @@
     font-weight: 300;
   }
 
-  .rightArrow, .leftArrow, .submit {
-    margin-left: 1em;
-  }
-
   .inputContainer {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    width: 100%;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
 
-  .inputContainer input, .inputContainer textarea {
-    max-width: 50%;
+  .time {
+    min-width: 90%;
   }
 }

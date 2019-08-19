@@ -1,7 +1,6 @@
 import React from 'react';
-import submit     from '../assets/submit.svg';
-import leftArrow  from '../assets/leftArrow.svg';
-import rightArrow from '../assets/rightArrow.svg';
+import {FaArrowRight, FaArrowLeft, FaCheck} from 'react-icons/fa';
+
 
 export default class Question extends React.Component {
   constructor(props){
@@ -21,21 +20,21 @@ export default class Question extends React.Component {
       case 'TIME':
         question.text  = 'How long did you study for?';
         question.input = <input className="time" type="time" value={this.props.time} onChange={this.handleTimeChange} />;
-        question.rightArrow = rightArrow;
+        question.rightArrow = true;
         question.classes = 'margin0';
         break;
       case 'TYPE':
         question.text  = 'What did you study?';
         question.input = <input className="type" type="text" value={this.props.type} onChange={this.handleTypeChange} />;
-        question.leftArrow  = leftArrow;
-        question.rightArrow = rightArrow;
+        question.leftArrow  = true;
+        question.rightArrow = true;
         question.classes = '';
         break;
       case 'NOTES':
         question.text  = 'Any notes for later?';
         question.input = <textarea className="note" value={this.props.note} onChange={this.handleNoteChange}></textarea>;
-        question.submit    = submit;
-        question.leftArrow = leftArrow;
+        question.submit    = true;
+        question.leftArrow = true;
         question.classes = '';
         break;
       default:
@@ -64,10 +63,10 @@ export default class Question extends React.Component {
         <div className="inputContainer">
           {question.input}
         </div>
-        <div className={`buttonContainer ${question.classes}`}>
-          <img className="leftArrow" onClick={this.props.handleLeftClick} src={question.leftArrow}></img>
-          <img className="rightArrow" onClick={this.props.handleRightClick} src={question.rightArrow}></img>
-          <img className="submit" onClick={this.props.handleSubmitClick} src={question.submit}></img>
+        <div className={`studyButtonContainer ${question.classes}`}>
+          {question.leftArrow  ? <div className="leftArrow" onClick={this.props.handleLeftClick}><FaArrowLeft></FaArrowLeft></div> : false} 
+          {question.rightArrow ? <div className="rightArrow" onClick={this.props.handleRightClick}><FaArrowRight></FaArrowRight></div> : false} 
+          {question.submit     ? <div className="submit" onClick={this.props.handleSubmitClick}><FaCheck></FaCheck></div> : false} 
         </div>
       </div>
     );
