@@ -206,7 +206,7 @@
   }
 
   .buttonContainer {
-    max-width: 90%;
+    max-width: 50%;
   }
 
   .balance, .rewardContainer {
@@ -224,6 +224,7 @@
     justify-content: center;
     font-size: 2em;
     margin-left:30%;
+    margin-bottom: 10%;
   }
 
   .balance .max span {
@@ -238,7 +239,16 @@
             justify-content: center;
   }
 
+  .reward .max {
+    margin-bottom:10%;
+    margin-right: 10%;
+  }
+
   .triangle {
     display:none;
+  }
+
+  .resetButton {
+    margin-top: 30%;
   }
 }
