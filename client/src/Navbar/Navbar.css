@@ -105,9 +105,19 @@
 
 @media only screen and (max-width: 1250px) {
   .showMenu {
-    width: 50%;
+    width: 70%;
+    height: auto;
+    padding-bottom: 10%;
     position: absolute;
     display: block !important;
+  }
+
+  .linkContainer ul {
+    width: 80%;
+  }
+  
+  .line {
+    width: 80%;
   }
 
   .navBar {
