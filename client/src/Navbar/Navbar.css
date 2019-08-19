@@ -119,6 +119,8 @@
 
   .mobile-nav {
     display:block;
+    z-index: 20;
+    position:relative;
   }
 
   .linkContainer ul {
