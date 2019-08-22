@@ -12,8 +12,8 @@ router.get('/', function(req, res){
       clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
       return clone;
     });
-    res.send(studyRows.reverse());
-  });
+    res.send(studyRows);
+  }).sort({ $natural: -1 });
 });
 
 router.get('/:id', function(req, res){
