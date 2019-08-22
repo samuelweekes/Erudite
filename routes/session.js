@@ -12,7 +12,7 @@ router.get('/', function(req, res){
       clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
       return clone;
     });
-    res.send(studyRows);
+    res.send(studyRows.reverse());
   });
 });
 
