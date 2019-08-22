@@ -33,9 +33,9 @@ class Navbar extends React.Component {
       case '/session':
         img = sessions;
       break;
-      case '/stat':
-        img = stats;
-      break;
+      // case '/stat':
+      //   img = stats;
+      // break;
       default:
         img = home;
     }
@@ -79,12 +79,12 @@ class Navbar extends React.Component {
                 <li>
                   <Link className="" onClick={this.toggleMenu} to="/session">Sessions</Link>
                 </li>
-                <div className="seperator"> 
+                {/* <div className="seperator"> 
                   <hr className="line"/>
                 </div>
                 <li>
                   <Link className="" onClick={this.toggleMenu} to="/stat">Stats</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
