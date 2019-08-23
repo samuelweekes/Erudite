@@ -5,6 +5,8 @@ import Study from './Study/Study.js';
 import Session from './Session/Session.js';
 import Stat from './Stat/Stat.js';
 import Account from './Account/Account.js';
+import SecuredRoute from './SecuredRoute';
+import Callback from './Callback';
 import './App.css';
 
 class App extends React.Component {
@@ -15,11 +17,12 @@ class App extends React.Component {
           <Navbar/>
           <div className="container">
             <Switch>
-              <Route exact component={Study} path="/" />
-              <Route component={Account} path="/account" />
-              <Route exact component={Session} path="/session" />
-              <Route exact component={Stat} path="/stat" /> />
+              <SecuredRoute exact component={Study} path="/" />
+              <SecuredRoute component={Account} path="/account" />
+              <SecuredRoute exact component={Session} path="/session" />
+              <SecuredRoute exact component={Stat} path="/stat" /> />
             </Switch>
+              <Route exact path='/callback' component={Callback}/>
           </div>
         </Router>
       </div>
