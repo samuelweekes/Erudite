@@ -24,7 +24,10 @@ const checkJwt = jwt({
   algorithms: ['RS256']
 });
 
-app.use(checkJwt);
+studyRoutes.use(checkJwt);
+accountRoutes.use(checkJwt);
+sessionRoutes.use(checkJwt);
+statRoutes.use(checkJwt);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use('/data/study', studyRoutes);
