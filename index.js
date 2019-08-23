@@ -15,12 +15,12 @@ const checkJwt = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `https://<YOUR_AUTH0_DOMAIN>/.well-known/jwks.json`
+    jwksUri: `https://flat-pond-4570.eu.auth0.com/.well-known/jwks.json`
   }),
   
   // Validate the audience and the issuer.
-  audience: '<YOUR_AUTH0_CLIENT_ID>',
-  issuer: `https://<YOUR_AUTH0_DOMAIN>/`,
+  audience: 'Tv-Wi43nEnQdrrZ0oPy3UC7izDwpVY06',
+  issuer: `https://flat-pond-4570.eu.auth0.com/`,
   algorithms: ['RS256']
 });
 
