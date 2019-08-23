@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const Mongo = require('./models/index');
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
 const studyRoutes   = require('./routes/study');
 const accountRoutes = require('./routes/account');
 const sessionRoutes = require('./routes/session');
@@ -8,6 +10,21 @@ const statRoutes    = require('./routes/stat');
 require("dotenv").config();
 
 const app = express();
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://<YOUR_AUTH0_DOMAIN>/.well-known/jwks.json`
+  }),
+  
+  // Validate the audience and the issuer.
+  audience: '<YOUR_AUTH0_CLIENT_ID>',
+  issuer: `https://<YOUR_AUTH0_DOMAIN>/`,
+  algorithms: ['RS256']
+});
+
+app.use(checkJwt);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use('/data/study', studyRoutes);
