@@ -4,6 +4,11 @@ const Mongo   = require('../models/index');
 const hardCodedId = process.env.PORT ? '5d59bbcb6cb1fc64ff79ad34': '5d4f1b7fd465d35adc4e762b';
 
 router.post('/', function(req, res){
+  if(req.user){
+    console.log(req.user);
+  } else {
+    console.log('none');
+  }
   Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
     if(err){console.log('Couldn\'t retrieve this account')};
     const newStudy = req.body.data;
@@ -11,7 +16,7 @@ router.post('/', function(req, res){
     const timeInSeconds = getSecondsFromTime(newStudy.time);
     const bonus         = getBonus(timeInSeconds);
     const reward        = getReward(accountData.balance, accountData.maxBalance, bonus);
-
+    
     newStudy.time = timeInSeconds;
     newStudy.reward = reward;
   
@@ -34,8 +39,7 @@ router.post('/', function(req, res){
       if(err){
         console.log('Couldn\'t add study session');
       }
-      // res.send(study);
-      res.send(req.user.name);
+      res.send(study);
     });
   }); 
 });

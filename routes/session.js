@@ -3,6 +3,11 @@ const router  = express.Router();
 const Mongo   = require('../models/index');
 
 router.get('/', function(req, res){
+  if(req.user){
+    console.log(req.user);
+  } else {
+    console.log('none');
+  }
   Mongo.Study.find({}, (err, study) => {
     if(err){console.log('Couldn\'t retrieve study sessions')};
     const studyRows = study.map((studySession) => {
@@ -12,8 +17,7 @@ router.get('/', function(req, res){
       clone.date = `${timestamp.toLocaleDateString()} at ${timestamp.toLocaleTimeString()}`;
       return clone;
     });
-    // res.send(studyRows);
-    res.send(req.user.name);
+    res.send(studyRows);
   }).sort({ $natural: -1 });
 });
 

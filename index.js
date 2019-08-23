@@ -24,16 +24,16 @@ const checkJwt = jwt({
   algorithms: ['RS256']
 });
 
-studyRoutes.use(checkJwt);
-accountRoutes.use(checkJwt);
-sessionRoutes.use(checkJwt);
-statRoutes.use(checkJwt);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use('/data/study', studyRoutes);
 app.use('/data/account', accountRoutes);
 app.use('/data/session', sessionRoutes);
 app.use('/data/stat', statRoutes);
+studyRoutes.use(checkJwt);
+accountRoutes.use(checkJwt);
+sessionRoutes.use(checkJwt);
+statRoutes.use(checkJwt);
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
