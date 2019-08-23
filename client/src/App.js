@@ -21,8 +21,8 @@ class App extends React.Component {
               <SecuredRoute component={Account} path="/account" />
               <SecuredRoute exact component={Session} path="/session" />
               <SecuredRoute exact component={Stat} path="/stat" /> />
-            </Switch>
               <Route exact path='/callback' component={Callback}/>
+            </Switch>
           </div>
         </Router>
       </div>
