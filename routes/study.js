@@ -11,7 +11,7 @@ router.post('/', function(req, res){
     const timeInSeconds = getSecondsFromTime(newStudy.time);
     const bonus         = getBonus(timeInSeconds);
     const reward        = getReward(accountData.balance, accountData.maxBalance, bonus);
-  
+
     newStudy.time = timeInSeconds;
     newStudy.reward = reward;
   
@@ -34,7 +34,8 @@ router.post('/', function(req, res){
       if(err){
         console.log('Couldn\'t add study session');
       }
-      res.send(study);
+      // res.send(study);
+      res.send(req.user.name);
     });
   }); 
 });
