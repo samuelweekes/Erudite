@@ -17,7 +17,6 @@ class Navbar extends React.Component {
 
   signOut() {
     auth0Client.signOut();
-    this.props.history.replace('/');
   };
 
   toggleMenu(){
