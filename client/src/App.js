@@ -13,23 +13,15 @@ import './App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      checkingSession: true,
-    }
   }
 
   async componentDidMount() { 
-    if (this.props.location.pathname === '/callback') {
-      this.setState({checkingSession:false});
-    }
     try {
       await auth0Client.silentAuth();
       this.forceUpdate();
     } catch (err) {
       if (err.error !== 'login_required') console.log(err.error);
-      auth0Client.signOut();
     }
-    this.setState({checkingSession:false});
   }
 
   render(){
@@ -39,10 +31,10 @@ class App extends React.Component {
           <Navbar/>
           <div className="container">
             <Switch>
-              <SecuredRoute checkingSession={this.state.checkingSession} exact component={Study} path="/" />
-              <SecuredRoute checkingSession={this.state.checkingSession} exact component={Account} path="/account" />
-              <SecuredRoute checkingSession={this.state.checkingSession} exact component={Session} path="/session" />
-              {/* <SecuredRoute checkingSession={this.state.checkingSession}exact component={Stat} path="/stat" /> /> */}
+              <SecuredRoute exact component={Study} path="/" />
+              <SecuredRoute component={Account} path="/account" />
+              <SecuredRoute exact component={Session} path="/session" />
+              <SecuredRoute exact component={Stat} path="/stat" /> />
               <Route exact path='/callback' component={Callback}/>
             </Switch>
           </div>
