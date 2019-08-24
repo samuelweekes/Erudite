@@ -7,8 +7,7 @@ class Auth {
       domain: 'flat-pond-4570.eu.auth0.com',
       audience: 'https://flat-pond-4570.eu.auth0.com/userinfo',
       clientID: 'Tv-Wi43nEnQdrrZ0oPy3UC7izDwpVY06',
-      redirectUri: 'http://localhost:3000/callback',
-      // redirectUri: 'https://studiousapp.herokuapp.com/callback',
+      redirectUri: 'https://studiousapp.herokuapp.com/callback',
       responseType: 'id_token',
       scope: 'openid profile'
     });
