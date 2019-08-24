@@ -19,17 +19,17 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
+    if (this.props.location.pathname === '/callback') {
+      this.setState({checkingSession:false});
+      return; 
+    }
     try {
       await auth0Client.silentAuth();
       this.forceUpdate();
-      this.props.history.replace('/');
-      this.setState({checkingSession:false});
     } catch (err) {
-      console.log(err);
       if (err.error !== 'login_required') console.log(err.error);
-      this.props.history.replace('/');
-      this.setState({checkingSession:false});
     }
+    this.setState({checkingSession:false});
   }
 
   render(){
