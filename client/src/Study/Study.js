@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import auth0Client from '../Auth';
 import Reward from './Reward.js';
 import Question from './Question.js';
 import './Study.css';
@@ -49,7 +50,7 @@ export default class Study extends React.Component {
   }
 
   handleSubmitClick(){
-    axios.post('/data/study/', {data: this.state})
+    axios.post('/data/study/', {data: this.state}, {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
     .then(res => {
       let reward;
       if(res.data.reward === 0){

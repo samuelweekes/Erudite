@@ -1,20 +1,14 @@
 const express = require('express');
 const path = require('path');
 const Mongo = require('./models/index');
-const studyRoutes   = require('./routes/study');
-const accountRoutes = require('./routes/account');
-const sessionRoutes = require('./routes/session');
-const statRoutes    = require('./routes/stat');
+const api   = require('./routes/api');
 require("dotenv").config();
 
 const app = express();
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client', 'build')));
-app.use('/data/study', studyRoutes);
-app.use('/data/account', accountRoutes);
-app.use('/data/session', sessionRoutes);
-app.use('/data/stat', statRoutes);
+app.use('/data', api);
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import auth0Client from '../Auth';
 import Card from './Card.js';
 import Search from './Search.js';
 import EditSession from './EditSession';
@@ -24,7 +25,7 @@ export default class Session extends React.Component {
   }
 
   getSessions(){
-    axios.get('/data/session')
+    axios.get('/data/session', {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
     .then(res => {
       const studySessions = res.data;
       this.setState({sessions: studySessions});

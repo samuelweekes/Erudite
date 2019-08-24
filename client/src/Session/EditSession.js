@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import {FaRedo, FaArrowLeft, FaCheck, FaLeaf} from 'react-icons/fa';
+import auth0Client from '../Auth';
+import {FaRedo, FaArrowLeft, FaCheck} from 'react-icons/fa';
 
 export default class EditSession extends React.Component {
     constructor(props){
@@ -25,7 +26,7 @@ export default class EditSession extends React.Component {
     }
 
     getSessionData(){
-      axios.get(`/data/session/${this.props.id}`)
+      axios.get(`/data/session/${this.props.id}`, {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
       .then(res => {
         const studySession = res.data;
         this.setState({...studySession});
@@ -45,14 +46,14 @@ export default class EditSession extends React.Component {
     }
 
     handleDelete(){
-      axios.delete('/data/session/delete', {data:{id:this.props.id}})
+      axios.delete('/data/session/delete', {data:{id:this.props.id}, headers:{'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
       .then(res => {
         this.props.handleReset();
       });
     }
 
     handleSubmit(){
-      axios.post('/data/session/edit', {id: this.props.id, ...this.state})
+      axios.post('/data/session/edit', {id: this.props.id, ...this.state}, {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
       .then(res => {
         this.props.handleReset();
       });

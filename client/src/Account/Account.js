@@ -26,21 +26,21 @@ export default class Account extends React.Component {
   componentWillReceiveProps(){
     this.getAccountData();
   }
-
+  
   getAccountData(){
-    axios.get('/data/account')
+    axios.get('/data/account', {headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }})
     .then(res => {
       this.setState({balance : res.data.balance, 
                      maxBalance : res.data.maxBalance,
                      reward: res.data.reward,
                      maxReward: res.data.maxReward,
-                     id: auth0Client.getProfile().sub
                     });
     });
   }
 
   addBalance(){
-    axios.post('data/account/', {balance: this.state.funds})
+    axios.post('data/account/', {balance: this.state.funds, ...auth0Client.getProfile()},
+    {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
     .then(res => {
       this.setState({balance : res.data.balance, maxBalance : res.data.maxBalance, funds: 0});
     });
@@ -52,14 +52,16 @@ export default class Account extends React.Component {
       return;
     }
     const negativeFunds = -(parseInt(this.state.funds, 10));
-    axios.post('/data/account/', {balance: negativeFunds})
+    axios.post('/data/account/', {balance: negativeFunds},
+    {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
     .then(res => {
       this.setState({balance : res.data.balance, maxBalance : res.data.maxBalance, funds: 0});
     });
   }
 
    addReward(){
-    axios.post('/data/account/reward', {balance: this.state.rewardFunds})
+    axios.post('/data/account/reward', {balance: this.state.rewardFunds},
+    {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
     .then(res => {
       this.setState({reward : res.data.reward, maxReward : res.data.maxReward, rewardFunds: 0});
     });
@@ -70,21 +72,22 @@ export default class Account extends React.Component {
       return;
     }
     const negativeFunds = -(parseInt(this.state.rewardFunds, 10));
-    axios.post('/data/account/reward', {balance: negativeFunds})
+    axios.post('/data/account/reward', {balance: negativeFunds},
+    {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
     .then(res => {
       this.setState({reward : res.data.reward, maxReward : res.data.maxReward, rewardFunds: 0});
     });
   }
 
   resetBalance(){
-    axios.post('/data/account/reset')
+    axios.post('/data/account/reset', {}, {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
     .then(res => {
       this.setState({balance : res.data.balance, maxBalance : res.data.maxBalance, funds: 0});
     });
   }
 
   resetReward(){
-    axios.post('/data/account/resetreward')
+    axios.post('/data/account/resetreward', {}, {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
     .then(res => {
       this.setState({maxReward : res.data.maxReward, rewardFunds: 0});
     });
