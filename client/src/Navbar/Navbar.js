@@ -47,6 +47,8 @@ class Navbar extends React.Component {
         img = home;
     }
 
+    console.log(auth0Client.getProfile());
+
     return (
       <div>
         <nav className="mobile-nav" role="navigation">
