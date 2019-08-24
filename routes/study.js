@@ -11,9 +11,9 @@ router.post('/', function(req, res){
     const bonus         = getBonus(timeInSeconds);
     const reward        = getReward(accountData.balance, accountData.maxBalance, bonus);
     
+    newStudy.username = req.user.name;
     newStudy.time = timeInSeconds;
     newStudy.reward = reward;
-    newStudy.username = req.body.name;
   
     const updateData = {
       "$inc": {
