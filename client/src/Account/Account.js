@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import auth0Client from '../Auth';
 import {FaPlus, FaMinus, FaRedo} from 'react-icons/fa';
 import './Account.css';
 
