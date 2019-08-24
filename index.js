@@ -1,7 +1,7 @@
 const express = require('express');
-const path = require('path');
-const Mongo = require('./models/index');
-const api   = require('./routes/api');
+const path    = require('path');
+const Mongo   = require('./models/index');
+const api     = require('./routes/api');
 require("dotenv").config();
 
 const app = express();
