@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import auth0Client from '../Auth';
 import {FaPlus, FaMinus, FaRedo} from 'react-icons/fa';
-import './Account.css';
+import './Account.module.css';
 
 export default class Account extends React.Component {
   constructor(props){
@@ -101,51 +101,44 @@ export default class Account extends React.Component {
   handleRewardChange(event){
     this.setState({rewardFunds: event.target.value});
   }
-
+  
   render(){
     return (
       <div className="account">
-        <div className="triangleContainer">
-          <div className="triangle"></div>
-        </div>
-        <div className="balanceContainer">
-          <div className="balance">
-            <div className="max">
-              <span>{this.state.maxBalance}</span>
+        <div className="triangle"></div>
+        <div className="balance-container">
+          <div className="balance-max">
+            <span>{this.state.maxBalance}</span>
+          </div>
+          <div className="balance-current">
+            <span>{this.state.balance}</span>
+          </div>
+            <div className="button-container">
+              <button className="minus-button" onClick={this.removeBalance}><FaMinus></FaMinus></button>
+              <input  className="balance-input" min="0" type="number" value={this.state.funds} onChange={this.handleBalanceChange}></input>
+              <button className="add-button" onClick={this.addBalance}><FaPlus></FaPlus></button>
             </div>
-            <div className="current">
-              <span>{this.state.balance}</span>
-            </div>
-            <div className="buttonContainer">
-              <div className="buttonGroup">
-                <button className="minusButton" onClick={this.removeBalance}><FaMinus></FaMinus></button>
-                <input className="balanceInput" min="0" type="number" value={this.state.funds} onChange={this.handleBalanceChange}></input>
-                <button className="plusButton" onClick={this.addBalance}><FaPlus></FaPlus></button>
-              </div>
-            </div>
-            <div className="resetButton">
-              <div className="resetButton"><FaRedo onClick={this.resetBalance}></FaRedo></div>
-            </div>
+          <div className="reset-button">
+            <FaRedo onClick={this.resetBalance}></FaRedo>
           </div>
         </div>
-        <div className="rewardContainer">
-          <div className="reward">
-            <div className="max">
-              <span>{this.state.maxReward}</span>
+        <div className="account-seperator"> 
+          <hr className="account-line"/>
+        </div>
+        <div className="reward-container">
+          <div className="reward-max">
+            <span>{this.state.maxReward}</span>
+          </div>
+          <div className="reward-current">
+            <span>{this.state.reward}</span>
+          </div>
+            <div className="button-container">
+              <button className="minus-button" onClick={this.removeReward}><FaMinus></FaMinus></button>
+              <input  className="reward-input" min="0" type="number" value={this.state.rewardFunds} onChange={this.handleRewardChange}></input>
+              <button className="add-button" onClick={this.addReward}><FaPlus></FaPlus></button>
             </div>
-            <div className="current">
-              <span>{this.state.reward}</span>
-            </div>
-            <div className="buttonContainer">
-              <div className="buttonGroup">
-                <button className="minusButton" onClick={this.removeReward}><FaMinus></FaMinus></button>
-                <input className="rewardInput" min="0" type="number" value={this.state.rewardFunds} onChange={this.handleRewardChange}></input>
-                <button className="plusButton" onClick={this.addReward}><FaPlus></FaPlus></button>
-              </div>
-            </div>
-            <div className="resetButton">
-              <div onClick={this.resetReward}><FaRedo></FaRedo></div>
-            </div>
+          <div className="reset-button">
+            <FaRedo onClick={this.resetReward}></FaRedo>
           </div>
         </div>
       </div>

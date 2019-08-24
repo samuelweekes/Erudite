@@ -24,7 +24,6 @@ const checkJwt = jwt({
 
 const getUser = function(req, res, next){
   Mongo.User.findOne({username : req.user.name}, (err, account) => {
-    console.log(`Found user, continuing...`);
     if(!account){
       const user = { 
         username: req.user.name,
@@ -35,7 +34,6 @@ const getUser = function(req, res, next){
           maxReward: 0
         }
       }
-      console.log(`Didn't find user, making a new user profile`);
       Mongo.User.create(user, (err) => {
         if(err){console.log(err)};
         next();

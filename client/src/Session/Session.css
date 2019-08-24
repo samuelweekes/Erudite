@@ -1,29 +1,149 @@
 .session {
-  height: 100%;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  height: auto;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      overflow-x: hidden;
-    overflow-y: scroll;
-          flex-direction: column;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
-.sessionInputContainer {
+.session-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin:15px 0 15px 0;
+} 
+
+.display {
+  width: 100%;
+  height: auto;
+  max-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+
+.search {
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-align:center;
+  width: 80%;
+  height: 30px;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px #34393C;
+}
+
+::placeholder {
+  font-size: 1rem;
+  text-align: center;
+  position:relative;
+}
+
+.card {
+  display: flex;
+  border-radius: 5px;
+  width: 80%;
+  margin: 0.5em 0 0.5em 0;
+  text-align: center;
+  background-color: #34393C;
+  color: #ffffff;
+  padding: 0.5em;
+  box-shadow: 2px 2px 5px #34393C;
+}
+
+.invisible {
+  display: none !important;
+}
+
+.card .left, .card .right {
+  width: 50%;
+}
+
+.card-reward {
+  margin-top: 5px;
+}
+
+.cardLine {
+  display: block;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  width: 80%;
+}
+
+.card {
+  min-height: 150px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cardLine {
+  height: 1px;
+}
+
+.cardNote {
+  order: 5;
+}
+
+.center {
+  width: 60%;
+  height: 50px;
+  overflow: auto;
+}
+
+.edit-type, .edit-time, .edit-note {
+  height: 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-align:center;
+  width: 80%;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px #34393C;
+}
+
+.edit-time {
+  width: 60px;
+  padding-left: 15px;
+}
+
+.edit-note {
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-align:center;
+  width: 100%;
+  overflow: auto;
+  resize:none;
+  height: 50px;
+}
+
+.session-back, .session-reset, .session-submit {
+  width: 30px;
+  color: #34393C;
+}
+
+.edit-session {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-buttons {
+  display:flex;
+  width: 200px;
+  margin-top: 5px;
+  justify-content: space-around;
+}
+
+/* .editSession .cardNote textarea {
+ 
+} */
+
+/* .sessionInputContainer {
   width: 100%;
   height: 25%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 .display {
   width: 100%;
@@ -151,10 +271,6 @@
   margin-top: 1em;
 }
 
-.invisible {
-  display: none !important;
-}
-
 .search {
   font-size: 1.8em;
   border: none;
@@ -233,13 +349,10 @@ font-size: 0.8em;
 .editSession ::placeholder {
   font-size: 1em;
   text-align: center;
-}
+} */
 
-@media only screen and (max-width: 800px) {
+/* @media only screen and (max-width: 800px) {
 
-  .search {
-    max-width: 70%;
-  }
 
   .card .left, .card .right {
     width: 50%;
@@ -346,5 +459,5 @@ font-size: 0.8em;
 
   .editButtons {
     max-width: 60vw;
- }
-}
+ } */
+/* } */

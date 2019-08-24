@@ -61,28 +61,28 @@ export default class EditSession extends React.Component {
 
     render(){
         return (
-          <div className="editSession">
+          <div className="edit-session">
             <div className="card"> 
               <div className="left">
-                <div className="upper cardType">
-                  <input placeholder="Type" value={this.state.type} onChange={this.handleTypeChange} type="text"></input>
+                <div className="cardType">
+                  <input className="edit-type" placeholder="Type" value={this.state.type} onChange={this.handleTypeChange} type="text"></input>
                 </div>
-                <div className="lower cardTime">
-                  <input placeholder="Time" value={this.state.time} onChange={this.handleTimeChange} type="time"></input>
+                <div className="card-time">
+                  <input className="edit-time" placeholder="Time" value={this.state.time} onChange={this.handleTimeChange} type="time"></input>
                 </div>
               </div>
-              <div className="center cardNote">
-                  <textarea placeholder="Note" value={this.state.note} onChange={this.handleNoteChange} type="text"></textarea>
+              <div className="cardNote">
+                  <textarea className="edit-note" placeholder="Note" value={this.state.note} onChange={this.handleNoteChange} type="text"></textarea>
               </div>
               <div className="right">
-                <div className="upper cardReward">£{this.state.reward}</div>
-                <div className="lower cardDate">{this.state.date.substring(0,10)}</div>
+                <div className="card-reward">£{this.state.reward}</div>
+                <div className="card-date">{this.state.date.substring(0,10)}</div>
               </div>
             </div>
-            <div className="editButtons">
-              <div className="sessionBack" onClick={this.props.handleReset}><FaArrowLeft></FaArrowLeft></div>
-              <div className="sessionReset" onClick={this.handleDelete}><FaRedo></FaRedo></div>
-              <div className="sessionSubmit" onClick={this.handleSubmit}><FaCheck></FaCheck></div>
+            <div className="edit-buttons">
+              <div className="session-back" onClick={this.props.handleReset}><FaArrowLeft></FaArrowLeft></div>
+              <div className="session-reset" onClick={this.handleDelete}><FaRedo></FaRedo></div>
+              <div className="session-submit" onClick={this.handleSubmit}><FaCheck></FaCheck></div>
             </div>
           </div>
         );

@@ -31,13 +31,13 @@ export default class Card extends React.Component {
     return (
       <div onClick={this.handleClick} className={`card ${isHidden}`}> 
         <div className="left">
-          <div className="upper cardType">{this.props.type}</div>
-          <div className="lower cardTime">{this.props.time}</div>
+          <div className="cardType">{this.props.type}</div>
+          <div className="cardTime">{this.props.time}</div>
         </div>
-        <div className="center cardNote">{this.props.note}</div>
+        <div className="cardNote">{this.props.note}</div>
         <div className="right">
-          <div className="upper cardReward">£{this.props.reward}</div>
-          <div className="lower cardDate">{this.props.date.substring(0,10)}</div>
+          <div className="cardReward">£{this.props.reward}</div>
+          <div className="cardDate">{this.props.date.substring(0,10)}</div>
         </div>
         <hr className="cardLine"></hr>
       </div>

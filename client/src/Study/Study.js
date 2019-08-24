@@ -3,7 +3,7 @@ import axios from 'axios';
 import auth0Client from '../Auth';
 import Reward from './Reward.js';
 import Question from './Question.js';
-import './Study.css';
+import './Study.module.css';
 
 const questionStates = ['TIME','TYPE','NOTES'];
 
@@ -62,7 +62,7 @@ export default class Study extends React.Component {
       setTimeout(() => {
         this.setState({question: questionStates[0], 
                        reward: false,
-                       time: '',
+                       time: '01:00',
                        type : '',
                        note: ''});
       }, 3000);

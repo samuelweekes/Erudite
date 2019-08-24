@@ -1,5 +1,36 @@
-.navBar {
-  width: 20%;
+.m-nav-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: #28546C;
+}
+
+.m-nav-icon {
+  width: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.d-nav {
+  display: none;
+}
+
+.selected {
+  color: #AA8B39;
+}
+
+@media only screen and (min-width: 1250px) {
+  .m-nav {
+    display: none;
+  }
+
+  .d-nav {
+    display: block;
+  }
+}
+
+
+/* .navBar {
+  width: 100%;
   float:left;
   background-color: #28546C;
   height:100vh
@@ -233,4 +264,4 @@
     -webkit-animation: none;
             animation: none;
   }
-}
+} */

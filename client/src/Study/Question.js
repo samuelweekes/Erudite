@@ -24,14 +24,14 @@ export default class Question extends React.Component {
         question.classes = 'margin0';
         break;
       case 'TYPE':
-        question.text  = 'What did you study?';
+        question.text  = 'What subject did you study?';
         question.input = <input className="type" type="text" value={this.props.type} onChange={this.handleTypeChange} />;
         question.leftArrow  = true;
         question.rightArrow = true;
         question.classes = '';
         break;
       case 'NOTES':
-        question.text  = 'Any notes for later?';
+        question.text  = 'Any notes to add for later?';
         question.input = <textarea className="note" value={this.props.note} onChange={this.handleNoteChange}></textarea>;
         question.submit    = true;
         question.leftArrow = true;
@@ -58,12 +58,12 @@ export default class Question extends React.Component {
   render() {
     const question = this.getQuestion();
     return(
-      <div className="questionContainer">
-        <h1 className="question">{question.text}</h1>
-        <div className="inputContainer">
+      <div className="question-container">
+        <h1 className="question-header">{question.text}</h1>
+        <div className="input-container">
           {question.input}
         </div>
-        <div className={`studyButtonContainer ${question.classes}`}>
+        <div className={`study-button-container ${question.classes}`}>
           {question.leftArrow  ? <div className="leftArrow" onClick={this.props.handleLeftClick}><FaArrowLeft></FaArrowLeft></div> : false} 
           {question.rightArrow ? <div className="rightArrow" onClick={this.props.handleRightClick}><FaArrowRight></FaArrowRight></div> : false} 
           {question.submit     ? <div className="submit" onClick={this.props.handleSubmitClick}><FaCheck></FaCheck></div> : false} 

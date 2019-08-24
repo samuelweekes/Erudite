@@ -4,27 +4,27 @@ import {Link, withRouter} from 'react-router-dom';
 import home     from '../assets/home.svg';
 import account  from '../assets/account.svg';
 import sessions from '../assets/sessions.svg';
-import stats    from '../assets/stats.svg';
+import {FaBookOpen, FaCoins, FaCalendarCheck, FaDoorOpen} from 'react-icons/fa';
 import './Navbar.css';
 
 class Navbar extends React.Component {
   constructor(props){
     super(props);
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.state = {mobileMenu: false};
     this.signOut = this.signOut.bind(this);
+    this.selectNavItem = this.selectNavItem.bind(this);
   }
 
   signOut() {
     auth0Client.signOut();
   };
 
-  toggleMenu(){
-    this.setState({mobileMenu : !this.state.mobileMenu});
-    if(this.state.mobileMenu === true){
-      let checkbox = document.getElementById("navCheck");
-      checkbox.checked = false;
+  selectNavItem(e) {
+    const icon = e.target.closest('.m-nav-icon');
+    const navIcons = document.querySelectorAll('.m-nav-icon');
+    for(let i=0; i < navIcons.length; i++){
+      navIcons[i].classList.remove('selected');
     }
+    icon.classList.add('selected');
   }
 
   render() {  
@@ -39,28 +39,25 @@ class Navbar extends React.Component {
       case '/session':
         img = sessions;
       break;
-      // case '/stat':
-      //   img = stats;
-      // break;
       default:
         img = home;
     }
 
     return (
       <div>
-        <nav className="mobile-nav" role="navigation">
-          <div className="menuToggle">
-            <input id="navCheck" type="checkbox" onClick={this.toggleMenu} />
-            <span className="mobile-span"></span>
-            <span className="mobile-span"></span>
-            <span className="mobile-span"></span>
+        <nav className="m-nav" role="navigation">
+          <div className="m-nav-container">
+            <Link onClick={this.selectNavItem} className="m-nav-icon selected" to="/"><FaBookOpen></FaBookOpen></Link>
+            <Link onClick={this.selectNavItem} className="m-nav-icon" to="/account"><FaCoins></FaCoins></Link>
+            <Link onClick={this.selectNavItem} className="m-nav-icon" to="/session"><FaCalendarCheck></FaCalendarCheck></Link>
+            <span className="m-nav-icon" onClick={this.signOut} ><FaDoorOpen></FaDoorOpen></span>
           </div>
         </nav>
-        <nav className={`navBar${this.state.mobileMenu ? ' showMenu' : ''}`} >
+        <nav className="d-nav">
           <div className="outerContainer">
             <div>
               <div className="imgOuter">
-                <Link onClick={this.toggleMenu} to="/" className="">
+                <Link to="/" className="">
                   <img src={img} className="img" />
                 </Link>
               </div>
@@ -71,19 +68,19 @@ class Navbar extends React.Component {
             <div className="linkContainer">
               <ul>
                 <li>
-                  <Link className="" onClick={this.toggleMenu} to="/">Home</Link>
+                  <Link className="" to="/">Home</Link>
                 </li>
                 <div className="seperator"> 
                   <hr className="line"/>
                 </div>
                 <li>
-                  <Link className="" onClick={this.toggleMenu} to="/account">Account</Link>
+                  <Link className="" to="/account">Account</Link>
                 </li>
                 <div className="seperator"> 
                   <hr className="line"/>
                 </div>
                 <li>
-                  <Link className="" onClick={this.toggleMenu} to="/session">Sessions</Link>
+                  <Link className="" to="/session">Sessions</Link>
                 </li>
                 <div className="seperator"> 
                   <hr className="line"/>
@@ -91,18 +88,10 @@ class Navbar extends React.Component {
                 <li>
                   {auth0Client.isAuthenticated() &&
                     <div>
-                      {/* <label className="mr-2 text-white">{auth0Client.getProfile().name}</label> */}
                       <Link className="" onClick={this.signOut} to="/session">Sign Out</Link>
                     </div>
                   }
                 </li>
-       
-                {/* <div className="seperator"> 
-                  <hr className="line"/>
-                </div>
-                <li>
-                  <Link className="" onClick={this.toggleMenu} to="/stat">Stats</Link>
-                </li> */}
               </ul>
             </div>
           </div>

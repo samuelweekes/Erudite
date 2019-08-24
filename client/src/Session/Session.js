@@ -48,7 +48,7 @@ export default class Session extends React.Component {
   render(){
     return (
       <div className="session">
-        <div className="sessionInputContainer">
+        <div className="session-input-container">
           {this.state.edit ? 
             <EditSession id={this.state.edit} handleReset={this.handleReset}></EditSession>
           :

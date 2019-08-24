@@ -17,7 +17,7 @@ export default class Reward extends React.Component {
     }
     return (
       <div className="reward">
-        <img src={reward}></img>
+        <img className="reward-img" src={reward}></img>
       </div>
     );
   }

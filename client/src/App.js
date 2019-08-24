@@ -8,7 +8,7 @@ import Stat from './Stat/Stat.js';
 import Account from './Account/Account.js';
 import SecuredRoute from './SecuredRoute';
 import Callback from './Callback';
-import './App.css';
+import './App.module.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,9 +26,9 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="App">
+      <div className="app">
         <Router>
-          <Navbar/>
+          <Navbar className="nav"/>
           <div className="container">
             <Switch>
               <SecuredRoute exact component={Study} path="/" />
