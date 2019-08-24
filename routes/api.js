@@ -1,5 +1,7 @@
 const express = require('express');
 const api  = express.Router();
+const util = require('util');
+const Mongo = require('../models/index');
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
 const studyRoutes   = require('./study');
@@ -15,13 +17,37 @@ const checkJwt = jwt({
     jwksUri: `https://flat-pond-4570.eu.auth0.com/.well-known/jwks.json`
   }),
 
-  // Validate the audience and the issuer.
   audience: 'Tv-Wi43nEnQdrrZ0oPy3UC7izDwpVY06',
   issuer: `https://flat-pond-4570.eu.auth0.com/`,
   algorithms: ['RS256']
 });
 
+const getUser = function(req, res, next){
+  Mongo.User.findOne({username : req.user.name}, (err, account) => {
+    console.log(`Found user, continuing...`);
+    if(!account){
+      const user = { 
+        username: req.user.name,
+        account: {
+          balance : 0,
+          maxBalance: 0,
+          reward: 0,
+          maxReward: 0
+        }
+      }
+      console.log(`Didn't find user, making a new user profile`);
+      Mongo.User.create(user, (err) => {
+        if(err){console.log(err)};
+        next();
+      });
+    } else {
+      next();
+    }
+  })
+}
+
 api.use(checkJwt);
+api.use(getUser);
 api.use('/study', studyRoutes);
 api.use('/account', accountRoutes);
 api.use('/session', sessionRoutes);
@@ -29,29 +55,3 @@ api.use('/session', sessionRoutes);
 
 module.exports = api;
 
-// const addUser = function(req, res, next){
-//   Mongo.User.findOne({id : req.body.name}, (err, account) => {
-//     if(!account){
-//       const user = { 
-//         id: req.body.name,
-//         username: 'asd333',
-//         password: 'asd123',
-//         account: {
-//           balance : 0,
-//           maxBalance: 0,
-//           reward: 0,
-//           maxReward: 0
-//         }
-//       }
-//       Mongo.User.create(user, (err, newUser) => {
-//         if(newUser){
-//           console.log('Made a new user');
-//           console.log(newUser);
-//         }
-//         next();
-//       });
-//     } else {
-//       next();
-//     }
-//   })
-// }

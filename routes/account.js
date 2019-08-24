@@ -1,10 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 const Mongo   = require('../models/index');
-const hardCodedId = process.env.PORT ? '5d59bbcb6cb1fc64ff79ad34': '5d4f1b7fd465d35adc4e762b';
 
 router.get('/', function(req, res){
-  Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
+  Mongo.User.findOne({username : req.user.name}, (err, account) => {
     if(!err){
       res.send(account.account);
     } else {
@@ -20,7 +19,7 @@ router.post('/', function(req, res){
       "account.maxBalance" : req.body.balance
       }
   }
-  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+  Mongo.User.findOneAndUpdate({username : req.user.name}, updateData, {new:true}, (err, account) => {
     if(err){
         console.log('There was a problem updating account');
     }
@@ -35,7 +34,7 @@ router.post('/reset', function(req, res){
       "account.maxBalance" : 0
       }
   }
-  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+  Mongo.User.findOneAndUpdate({username : req.user.name}, updateData, {new:true}, (err, account) => {
     if(err){
         console.log('There was a problem updating account');
     }
@@ -50,7 +49,7 @@ router.post('/reward', function(req, res){
       "account.maxReward" : req.body.balance > 0 ? req.body.balance : 0
       }
   }
-  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+  Mongo.User.findOneAndUpdate({username : req.user.name}, updateData, {new:true}, (err, account) => {
     if(err){
         console.log('There was a problem updating account');
     }
@@ -64,7 +63,7 @@ router.post('/resetreward', function(req, res){
       "account.maxReward" : 0
       }
   }
-  Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err, account) => {
+  Mongo.User.findOneAndUpdate({username : req.user.name}, updateData, {new:true}, (err, account) => {
     if(err){
         console.log('There was a problem updating account');
     }

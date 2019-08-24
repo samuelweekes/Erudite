@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const studySchema = new mongoose.Schema({
+  username : String,
   time : Number,
   type : String,
   note : String,

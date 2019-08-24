@@ -3,7 +3,7 @@ const router  = express.Router();
 const Mongo   = require('../models/index');
 
 router.get('/', function(req, res){
-  Mongo.Study.find({}, (err, study) => {
+  Mongo.Study.find({username: req.user.name}, (err, study) => {
     if(err){console.log('Couldn\'t retrieve study sessions')};
     const studyRows = study.map((studySession) => {
       const clone = {...studySession.toObject()}

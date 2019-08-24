@@ -1,10 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 const Mongo   = require('../models/index');
-const hardCodedId = process.env.PORT ? '5d59bbcb6cb1fc64ff79ad34': '5d4f1b7fd465d35adc4e762b';
 
 router.post('/', function(req, res){
-  Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
+  Mongo.User.findOne({username : req.user.name}, (err, account) => {
     if(err){console.log('Couldn\'t retrieve this account')};
     const newStudy = req.body.data;
     const accountData   = account.account;
@@ -14,6 +13,7 @@ router.post('/', function(req, res){
     
     newStudy.time = timeInSeconds;
     newStudy.reward = reward;
+    newStudy.username = req.body.name;
   
     const updateData = {
       "$inc": {
@@ -23,7 +23,7 @@ router.post('/', function(req, res){
         }
     }
   
-    Mongo.User.findByIdAndUpdate(hardCodedId, updateData, {new:true}, (err) => {
+    Mongo.User.findOneAndUpdate({username : req.user.name}, updateData, {new:true}, (err) => {
       if(err){
         console.log(err);
         console.log('There was a problem updating account');

@@ -39,7 +39,7 @@ export default class Account extends React.Component {
   }
 
   addBalance(){
-    axios.post('data/account/', {balance: this.state.funds, ...auth0Client.getProfile()},
+    axios.post('data/account/', {balance: this.state.funds},
     {headers: {'Authorization': `Bearer ${auth0Client.getIdToken()}`}})
     .then(res => {
       this.setState({balance : res.data.balance, maxBalance : res.data.maxBalance, funds: 0});
