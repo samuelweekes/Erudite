@@ -18,7 +18,7 @@ class App extends React.Component {
     }
   }
 
-  async componentDidMount() {
+  async componentDidMount() {``
     if (this.props.location.pathname === '/callback') {
       this.setState({checkingSession:false});
       return; 
