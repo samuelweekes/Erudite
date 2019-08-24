@@ -3,14 +3,14 @@ const router  = express.Router();
 const Mongo   = require('../models/index');
 const hardCodedId = process.env.PORT ? '5d59bbcb6cb1fc64ff79ad34': '5d4f1b7fd465d35adc4e762b';
 
-router.get('/', checkJwt, function(req, res){
+router.get('/', function(req, res){
   Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
     if(err){console.log('Couldn\'t retrieve this account')};
     res.send(account.account);
   });
 });
 
-router.post('/', checkJwt, function(req, res){
+router.post('/', function(req, res){
   const updateData = {
     "$inc": {
       "account.balance" : req.body.balance,
