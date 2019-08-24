@@ -4,7 +4,7 @@ class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
       domain: 'flat-pond-4570.eu.auth0.com',
-      audience: 'flat-pond-4570.eu.auth0.com',
+      audience: 'https://flat-pond-4570.eu.auth0.com/userinfo',
       clientID: 'Tv-Wi43nEnQdrrZ0oPy3UC7izDwpVY06',
       redirectUri: 'https://studiousapp.herokuapp.com/callback',
       responseType: 'id_token',
@@ -56,7 +56,7 @@ class Auth {
 
   signOut() {
     this.auth0.logout({
-      returnTo: 'flat-pond-4570.eu.auth0.com',
+      returnTo: 'https://flat-pond-4570.eu.auth0.com/userinfo',
       clientID: 'Tv-Wi43nEnQdrrZ0oPy3UC7izDwpVY06',
     });
   }
