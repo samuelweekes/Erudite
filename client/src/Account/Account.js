@@ -124,7 +124,7 @@ export default class Account extends React.Component {
               </div>
             </div>
             <div className="resetButton">
-              <div className="resetButton" onClick={this.resetBalance}><FaRedo></FaRedo></div>
+              <div className="resetButton"><FaRedo onClick={this.resetBalance}></FaRedo></div>
             </div>
           </div>
         </div>
