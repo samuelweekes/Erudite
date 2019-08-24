@@ -4,9 +4,12 @@ const Mongo   = require('../models/index');
 const hardCodedId = process.env.PORT ? '5d59bbcb6cb1fc64ff79ad34': '5d4f1b7fd465d35adc4e762b';
 
 router.get('/', function(req, res){
-  Mongo.User.findOne({_id : hardCodedId}, (err, account) => {
-    if(err){console.log('Couldn\'t retrieve this account')};
-    res.send(account.account);
+  Mongo.User.findOne({_id : req.body.id}, (err, account) => {
+    if(!err){
+      res.send(account.account);
+    } else {
+      console.log('Couldn\'t retrieve this account')
+    }
   });
 });
 

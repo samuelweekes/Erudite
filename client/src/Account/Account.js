@@ -32,7 +32,9 @@ export default class Account extends React.Component {
       this.setState({balance : res.data.balance, 
                      maxBalance : res.data.maxBalance,
                      reward: res.data.reward,
-                     maxReward: res.data.maxReward});
+                     maxReward: res.data.maxReward,
+                     id: auth0Client.getProfile().sub
+                    });
     });
   }
 
