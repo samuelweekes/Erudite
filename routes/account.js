@@ -3,6 +3,28 @@ const router  = express.Router();
 const Mongo   = require('../models/index');
 const hardCodedId = process.env.PORT ? '5d59bbcb6cb1fc64ff79ad34': '5d4f1b7fd465d35adc4e762b';
 
+const addUser = function(req, res, next){
+  Mongo.User.findOne({_id : req.body.id}, (err, account) => {
+    if(!account){
+      const user = { 
+        username: 'Test',
+        password: '123pass',
+        account: {balance : 0,
+          maxBalance: 0,
+          reward: 0,
+          maxReward: 0
+        }
+      }
+      Mongo.User.create(user, (err, newUser) => {
+        console.log('Made a new user');
+        next();
+      });
+    } else {
+      next();
+    }
+  })
+}
+
 router.get('/', function(req, res){
   Mongo.User.findOne({_id : req.body.id}, (err, account) => {
     if(!err){
@@ -13,7 +35,7 @@ router.get('/', function(req, res){
   });
 });
 
-router.post('/', function(req, res){
+router.post('/', addUser, function(req, res){
   const updateData = {
     "$inc": {
       "account.balance" : req.body.balance,
