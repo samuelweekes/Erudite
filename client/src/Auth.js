@@ -56,7 +56,7 @@ class Auth {
 
   signOut() {
     this.auth0.logout({
-      returnTo: 'https://flat-pond-4570.eu.auth0.com/userinfo',
+      returnTo: 'https://studiousapp.herokuapp.com/callback',
       clientID: 'Tv-Wi43nEnQdrrZ0oPy3UC7izDwpVY06',
     });
   }
