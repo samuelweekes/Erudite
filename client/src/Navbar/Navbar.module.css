@@ -1,0 +1,99 @@
+.m-nav-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: #28546C;
+}
+
+.m-nav-icon {
+  width: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.d-nav {
+  display: none;
+}
+
+.selected {
+  color: #AA8B39;
+}
+
+@media only screen and (min-width: 1250px) {
+  .m-nav {
+    display: none;
+  }
+
+  .d-nav {
+    display: block;
+    background-color: #28546C;
+  }
+
+  .imgOuter {
+    width: 100%;
+    height: 200px;
+  }
+
+  .img {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    height: 90%;
+    animation: fadein 2s;
+  }
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .imgSeperator {
+    margin-top: 10%;
+    max-height: 10%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .imgLine {
+    width: 60%;
+    height: 0px;
+  }
+  
+  .link-container {
+    display: flex;
+    justify-content: center;
+    max-height: 50%;
+  }
+
+  .seperator {
+    width: 100%;
+    height: 4%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .line {
+    width: 100%;
+    height: 0px;
+  }
+  
+  .link-container ul {
+    width: 33%;
+    text-align: center;
+  }
+  
+  .link-container li {
+    list-style : none;
+    height: 10%;
+    transition: all .1s ease-out;
+  }
+
+  .link-container a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .link-container li:hover {
+    transform: scale(1.2);
+  }
+}

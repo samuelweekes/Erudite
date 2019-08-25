@@ -1,0 +1,183 @@
+.session {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.session-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin:15px 0 15px 0;
+} 
+
+.display {
+  width: 100%;
+  height: auto;
+  max-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+
+.search {
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-align:center;
+  width: 80%;
+  max-width: 500px;
+  height: 30px;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px #34393C;
+}
+
+::placeholder {
+  font-size: 1rem;
+  text-align: center;
+  position:relative;
+}
+
+.card {
+  display: flex;
+  border-radius: 5px;
+  width: 80%;
+  margin: 0.5em 0 0.5em 0;
+  text-align: center;
+  background-color: #34393C;
+  color: #ffffff;
+  padding: 0.5em;
+  box-shadow: 2px 2px 5px #34393C;
+}
+
+.invisible {
+  display: none !important;
+}
+
+.card .left, .card .right {
+  width: 50%;
+}
+
+.card-reward {
+  margin-top: 5px;
+}
+
+.cardLine {
+  display: block;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  width: 80%;
+}
+
+.card {
+  min-height: 150px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cardLine {
+  height: 1px;
+}
+
+.cardNote {
+  order: 5;
+}
+
+.center {
+  width: 60%;
+  height: 50px;
+  overflow: auto;
+}
+
+.edit-type, .edit-time, .edit-note {
+  height: 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-align:center;
+  width: 80%;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px #34393C;
+}
+
+.edit-time {
+  width: 60px;
+  padding-left: 15px;
+}
+
+.edit-note {
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-align:center;
+  width: 100%;
+  overflow: auto;
+  resize:none;
+  height: 50px;
+}
+
+.session-back, .session-reset, .session-submit {
+  width: 30px;
+  color: #34393C;
+}
+
+.edit-session {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-buttons {
+  display:flex;
+  width: 200px;
+  margin-top: 5px;
+  justify-content: space-around;
+}
+
+@media only screen and (min-width: 1250px) {
+  .edit-time {
+    width: 50%;
+    max-width: 300px;
+    padding-left: 5%;
+  }
+
+  .search {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .edit-session .right {
+    margin-top: 7px;
+  }
+
+  .card .left, .card .right {
+    padding-top: 10px;
+  }
+
+  .session-back, .session-submit {
+    transition: all .1s ease-in-out;
+  }
+
+  .session-back:hover {
+    cursor:pointer;
+    transform: scale(1.2);
+  }
+
+  .session-submit:hover {
+    cursor:pointer;
+    color: #29784E;
+    transform: scale(1.2);
+  }
+
+  .session-reset svg {
+    transition: transform .8s ease-in-out;
+    cursor: pointer;
+  }
+  .session-reset svg:hover {
+    transform: rotate(360deg);
+    color: rgb(120, 41, 41);
+  }
+}
