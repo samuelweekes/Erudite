@@ -8,7 +8,7 @@ import Stat from './Stat/Stat.js';
 import Account from './Account/Account.js';
 import SecuredRoute from './SecuredRoute';
 import Callback from './Callback';
-import './App.module.css';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {

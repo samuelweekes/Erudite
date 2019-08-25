@@ -1,8 +1,6 @@
 {
-  "short_name": "Dopa Study",
-  "name": "Dopa Study",
+  "short_name": "Erudite",
+  "name": "Erudite",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import auth0Client from '../Auth';
 import {Link, withRouter} from 'react-router-dom';
+import {FaBookOpen, FaCoins, FaCalendarCheck, FaDoorOpen} from 'react-icons/fa';
+import './Navbar.module.css';
 import home     from '../assets/home.svg';
 import account  from '../assets/account.svg';
 import sessions from '../assets/sessions.svg';
-import {FaBookOpen, FaCoins, FaCalendarCheck, FaDoorOpen} from 'react-icons/fa';
-import './Navbar.css';
 
 class Navbar extends React.Component {
   constructor(props){
@@ -27,7 +27,7 @@ class Navbar extends React.Component {
     icon.classList.add('selected');
   }
 
-  render() {  
+  render() {
     let img;
     switch(this.props.location.pathname){
       case '/':
@@ -44,59 +44,57 @@ class Navbar extends React.Component {
     }
 
     return (
-      <div>
-        <nav className="m-nav" role="navigation">
-          <div className="m-nav-container">
-            <Link onClick={this.selectNavItem} className="m-nav-icon selected" to="/"><FaBookOpen></FaBookOpen></Link>
-            <Link onClick={this.selectNavItem} className="m-nav-icon" to="/account"><FaCoins></FaCoins></Link>
-            <Link onClick={this.selectNavItem} className="m-nav-icon" to="/session"><FaCalendarCheck></FaCalendarCheck></Link>
-            <span className="m-nav-icon" onClick={this.signOut} ><FaDoorOpen></FaDoorOpen></span>
+    <div>
+      <nav className="m-nav" role="navigation">
+        <div className="m-nav-container">
+          <Link onClick={this.selectNavItem} className="m-nav-icon selected" to="/"><FaBookOpen></FaBookOpen></Link>
+          <Link onClick={this.selectNavItem} className="m-nav-icon" to="/account"><FaCoins></FaCoins></Link>
+          <Link onClick={this.selectNavItem} className="m-nav-icon" to="/session"><FaCalendarCheck></FaCalendarCheck></Link>
+          <span className="m-nav-icon" onClick={this.signOut} ><FaDoorOpen></FaDoorOpen></span>
+        </div>
+      </nav>
+      <nav className="d-nav">
+        <div className="outerContainer">
+          <div className="imgOuter">
+            <Link to="/" className="">
+              <img src={img} className="img" />
+            </Link>
           </div>
-        </nav>
-        <nav className="d-nav">
-          <div className="outerContainer">
-            <div>
-              <div className="imgOuter">
-                <Link to="/" className="">
-                  <img src={img} className="img" />
-                </Link>
-              </div>
-              <div className="imgSeperator"> 
-                <hr className="imgLine"/>
-              </div>
-            </div>
-            <div className="linkContainer">
-              <ul>
-                <li>
-                  <Link className="" to="/">Home</Link>
-                </li>
-                <div className="seperator"> 
-                  <hr className="line"/>
-                </div>
-                <li>
-                  <Link className="" to="/account">Account</Link>
-                </li>
-                <div className="seperator"> 
-                  <hr className="line"/>
-                </div>
-                <li>
-                  <Link className="" to="/session">Sessions</Link>
-                </li>
-                <div className="seperator"> 
-                  <hr className="line"/>
-                </div>
-                <li>
-                  {auth0Client.isAuthenticated() &&
-                    <div>
-                      <Link className="" onClick={this.signOut} to="/session">Sign Out</Link>
-                    </div>
-                  }
-                </li>
-              </ul>
-            </div>
+          <div className="imgSeperator"> 
+            <hr className="imgLine"/>
           </div>
-        </nav>
-      </div>
+          <div className="link-container">
+            <ul>
+              <li>
+                <Link className="" to="/">Home</Link>
+              </li>
+              <div className="seperator"> 
+                <hr className="line"/>
+              </div>
+              <li>
+                <Link className="" to="/account">Account</Link>
+              </li>
+              <div className="seperator"> 
+                <hr className="line"/>
+              </div>
+              <li>
+                <Link className="" to="/session">Sessions</Link>
+              </li>
+              <div className="seperator"> 
+                <hr className="line"/>
+              </div>
+              <li>
+                {auth0Client.isAuthenticated() &&
+                <div>
+                  <Link className="" onClick={this.signOut} to="/session">Sign Out</Link>
+                </div>
+                }
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
     );
   }
 }

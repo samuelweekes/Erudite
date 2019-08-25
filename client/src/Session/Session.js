@@ -4,7 +4,7 @@ import auth0Client from '../Auth';
 import Card from './Card.js';
 import Search from './Search.js';
 import EditSession from './EditSession';
-import './Session.css';
+import './Session.module.css';
 
 export default class Session extends React.Component {
   constructor(props){
