@@ -4,7 +4,6 @@ import auth0Client from './Auth';
 import Navbar from './Navbar/Navbar.js';
 import Study from './Study/Study.js';
 import Session from './Session/Session.js';
-import Stat from './Stat/Stat.js';
 import Account from './Account/Account.js';
 import SecuredRoute from './SecuredRoute';
 import Callback from './Callback';
@@ -34,7 +33,6 @@ class App extends React.Component {
               <SecuredRoute exact component={Study} path="/" />
               <SecuredRoute component={Account} path="/account" />
               <SecuredRoute exact component={Session} path="/session" />
-              <SecuredRoute exact component={Stat} path="/stat" /> />
               <Route exact path='/callback' component={Callback}/>
             </Switch>
           </div>

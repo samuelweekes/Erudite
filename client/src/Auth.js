@@ -6,8 +6,7 @@ class Auth {
       domain: 'flat-pond-4570.eu.auth0.com',
       audience: 'https://flat-pond-4570.eu.auth0.com/userinfo',
       clientID: 'Tv-Wi43nEnQdrrZ0oPy3UC7izDwpVY06',
-      redirectUri: 'http://192.168.1.114:3000/callback',
-      // redirectUri: 'https://studiousapp.herokuapp.com/callback',
+      redirectUri: 'https://studiousapp.herokuapp.com/callback',
       responseType: 'id_token',
       scope: 'openid profile'
     });
@@ -57,8 +56,7 @@ class Auth {
 
   signOut() {
     this.auth0.logout({
-      returnTo: 'http://192.168.1.114:3000',
-      // returnTo: 'https://studiousapp.herokuapp.com/',
+      returnTo: 'https://studiousapp.herokuapp.com/',
       clientID: 'Tv-Wi43nEnQdrrZ0oPy3UC7izDwpVY06',
     });
   }
