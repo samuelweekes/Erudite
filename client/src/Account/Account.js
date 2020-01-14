@@ -105,9 +105,9 @@ export default class Account extends React.Component {
   render(){
     return (
       <div className="account">
-      <h1>Your funds</h1>
         <div className="triangle"></div>
         <div className="balance-container">
+          <h1 className="account-header">Your funds</h1>
           <div className="balance-max">
             <span>{this.state.maxBalance}</span>
           </div>
@@ -127,6 +127,7 @@ export default class Account extends React.Component {
           <hr className="account-line"/>
         </div>
         <div className="reward-container">
+          <h1 className="account-header">Your rewards</h1>
           <div className="reward-max">
             <span>{this.state.maxReward}</span>
           </div>
