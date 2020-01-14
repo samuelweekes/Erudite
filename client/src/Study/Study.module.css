@@ -64,6 +64,13 @@
   justify-content: center;
 }
 
+.reward-header{
+  color: #34393D;
+  max-height: 40px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
 .reward-img {
   margin-top: 100px;
   max-width: 80%;
