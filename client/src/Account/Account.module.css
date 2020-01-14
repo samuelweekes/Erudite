@@ -115,7 +115,11 @@
   }
 }
 
-@media only screen and (min-width: 768px) { 
+@media only screen and (min-width: 1250px) { 
+  .account {
+    height: 100%;
+  }
+
   .reset-button {
     display: block;
     padding-top: 15px;
@@ -123,12 +127,6 @@
     height: auto;
     color: #34393C;
     margin: 5px 0 5px 0;
-  }
-}
-
-@media only screen and (min-width: 1250px) { 
-  .account {
-    height: 100%;
   }
 
   .triangle {
