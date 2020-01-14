@@ -76,6 +76,7 @@
   min-height: 150px;
   flex-wrap: wrap;
   justify-content: center;
+  overflow: scroll;
 }
 
 .cardLine {
@@ -84,6 +85,7 @@
 
 .cardNote {
   order: 5;
+  word-wrap: break-word;
 }
 
 .center {
