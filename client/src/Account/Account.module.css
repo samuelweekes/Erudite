@@ -71,6 +71,7 @@
   height: auto;
   color: #34393C;
   margin: 5px 0 5px 0;
+  padding-top:10px;
 }
 
 .add-button svg, .minus-button svg, .reset-button svg {
@@ -143,7 +144,6 @@
 
   .reset-button {
     padding-top: 15px;
-    margin-top: 10px;
   }
 
   .balance-max, .reward-max {
