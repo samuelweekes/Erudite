@@ -15,7 +15,7 @@ export default class Reward extends React.Component {
     } else {
       reward = REWARD0;
     }
-    let rewardText = (this.props.reward > 0) ? `You earned a reward of £${this.props.reward}` : '';
+    let rewardText = (this.props.reward > 0) ? `You earned a reward of £${this.props.reward}!` : 'No reward this time!';
     return (
       <div className="reward">
        <div><h1 className="reward-header">{rewardText}</h1></div>
