@@ -18,7 +18,7 @@ export default class Reward extends React.Component {
     let rewardText = reward ? `You earned a reward of £${this.props.reward}` : '';
     return (
       <div className="reward">
-        <h1 className="reward-header">rewardText</h1>
+        <h1 className="reward-header">{rewardText}</h1>
         <img className="reward-img" src={reward}></img>
       </div>
     );
