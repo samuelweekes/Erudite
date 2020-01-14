@@ -115,6 +115,17 @@
   }
 }
 
+@media only screen and (min-width: 768px) { 
+  .reset-button {
+    display: block;
+    padding-top: 15px;
+    width: 70px;
+    height: auto;
+    color: #34393C;
+    margin: 5px 0 5px 0;
+  }
+}
+
 @media only screen and (min-width: 1250px) { 
   .account {
     height: 100%;
@@ -141,15 +152,6 @@
 
   .balance-input, .reward-input {
     padding-left: 5%;
-  }
-
-  .reset-button {
-    display: block;
-    padding-top: 15px;
-    width: 70px;
-    height: auto;
-    color: #34393C;
-    margin: 5px 0 5px 0;
   }
 
   .balance-max, .reward-max {
