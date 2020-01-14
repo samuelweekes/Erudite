@@ -67,11 +67,12 @@
 }
 
 .reset-button {
-  width: 70px;
+  display: none;
+/*  width: 70px;
   height: auto;
   color: #34393C;
   margin: 5px 0 5px 0;
-  padding-top:10px;
+  padding-top:10px; */
 }
 
 .add-button svg, .minus-button svg, .reset-button svg {
@@ -143,6 +144,7 @@
   }
 
   .reset-button {
+    display: block;
     padding-top: 15px;
   }
 
