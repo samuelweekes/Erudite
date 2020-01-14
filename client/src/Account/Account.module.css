@@ -146,6 +146,10 @@
   .reset-button {
     display: block;
     padding-top: 15px;
+    width: 70px;
+    height: auto;
+    color: #34393C;
+    margin: 5px 0 5px 0;
   }
 
   .balance-max, .reward-max {
