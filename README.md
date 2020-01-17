@@ -1,4 +1,4 @@
-Simple react project just for learning React/React Router and getting some more practice with Express and Auth0 authentication.
+Simple react project just for learning React/React Router. Also for getting some more practice with Express and Auth0 authentication.
 
 CRUD operations for loggin study sessions and getting monetary rewards (by placing in a monthly budget) -  mobile/desktop UI. 
 
